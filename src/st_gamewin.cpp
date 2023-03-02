@@ -18,6 +18,8 @@ void st_gamewin::update()
 
 void st_gamewin::render(double a)
 {
+    (void)a;
+
     const auto* tex = state->texman->get("assets/amalgamation.png");
 
     glBindTexture(GL_TEXTURE_2D, tex->tex);
@@ -49,6 +51,7 @@ void st_gamewin::render(double a)
 
 void st_gamewin::handle_event(const SDL_Event& ev)
 {
+    (void)ev;
 }
 
 void st_gamewin::render_fade()
@@ -67,6 +70,8 @@ void st_gamewin::render_fade()
 
 void st_gamewin::enter(gamestate* old)
 {
+    (void)old;
+
     sub = fade_in;
     fade_timer = owner->create_timer(3);
     state->audio->play_sound("assets/sound/torch.ogg");

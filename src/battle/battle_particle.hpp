@@ -29,6 +29,8 @@ struct battle_particle
 
     void update(float floor)
     {
+        (void)floor;
+
         float factor = scale * size;
         float actual_size = factor * 16.f;
         float actual_floor = actual_size / 2;

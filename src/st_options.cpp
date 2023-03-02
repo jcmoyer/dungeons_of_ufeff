@@ -46,6 +46,8 @@ void st_options::update()
 
 void st_options::render(double a)
 {
+    (void)a;
+
     glClearColor(0, 0, 0, 1);
     glClear(GL_COLOR_BUFFER_BIT);
 
@@ -92,7 +94,7 @@ void st_options::handle_event(const SDL_Event& ev)
 
         for (option_button& b : input_buttons)
         {
-            if (b.rect.contains(cursor.x, cursor.y))
+            if (b.rect.contains((int)cursor.x, (int)cursor.y))
             {
                 pending_button = &b;
                 sub = waiting_for_key;
@@ -107,12 +109,12 @@ void st_options::handle_event(const SDL_Event& ev)
             sub = none;
         }
 
-        if (res_button.rect.contains(cursor.x, cursor.y))
+        if (res_button.rect.contains((int)cursor.x, (int)cursor.y))
         {
             owner->select_next_resolution();
             res_button.update_text(owner->get_scale());
         }
-        else if (fs_button.rect.contains(cursor.x, cursor.y))
+        else if (fs_button.rect.contains((int)cursor.x, (int)cursor.y))
         {
             owner->toggle_fullscreen();
         }

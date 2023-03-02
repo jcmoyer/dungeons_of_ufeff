@@ -136,7 +136,7 @@ void st_battle::update()
             }
             else
             {
-                //anim.set_animation("down");
+                // anim.set_animation("down");
             }
         }
     }
@@ -367,7 +367,7 @@ void st_battle::enter(gamestate* old)
 
     // extra cuteness
     b_cam.tracking_rate = b_cam.TRACK_RATE_OPENING;
-    //b_cam.center_on({ 1200, 400 });
+    // b_cam.center_on({ 1200, 400 });
 
     b_field.clear();
 

@@ -134,7 +134,7 @@ struct tilemap
     std::vector<tile> base;
     std::vector<tile> detail;
     std::vector<tile> fringe;
-    //std::vector<float> bright_map;
+    // std::vector<float> bright_map;
 
     const tile& at(uint32_t x, uint32_t y) const
     {

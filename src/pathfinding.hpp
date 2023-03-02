@@ -123,9 +123,9 @@ inline path_seq find_path(world& wor, int x0, int y0, int x1, int y1)
 
     while (frontier.size())
     {
-        //std::sort(frontier.begin(), frontier.end(), [&](const point& left, const point& right) {
-        //    return f_score.get(left) > f_score.get(right);
-        //});
+        // std::sort(frontier.begin(), frontier.end(), [&](const point& left, const point& right) {
+        //     return f_score.get(left) > f_score.get(right);
+        // });
 
         point current = frontier.front();
         std::pop_heap(frontier.begin(), frontier.end(), [&](const point& left, const point& right) {

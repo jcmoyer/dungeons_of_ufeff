@@ -82,7 +82,7 @@ void battle_field_renderer::render(const glm::mat4& view, const glm::mat4& proje
 {
     glUseProgram(prog.get_handle());
     glBindVertexArray(vao);
-    glBindBuffer(GL_ARRAY_BUFFER, buffer); //don't think this is necessary, should be part of vao state?
+    glBindBuffer(GL_ARRAY_BUFFER, buffer); // don't think this is necessary, should be part of vao state?
 
     glUniformMatrix4fv(uView, 1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(uProjection, 1, GL_FALSE, glm::value_ptr(projection));

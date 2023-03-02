@@ -125,5 +125,5 @@ void imm_renderer::begin()
 
 void imm_renderer::set_output_dimensions(int w, int h)
 {
-    transform = glm::ortho<float>(0, w, h, 0);
+    transform = glm::ortho<float>(0.0f, (float)w, (float)h, 0.0f);
 }

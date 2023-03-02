@@ -103,6 +103,8 @@ void spritebatch::draw_quad(const texture* tex, const rectangle& src, const rect
 
 void spritebatch::draw_tiled_quad(const texture* tex, const rectangle& dest, float rx, float ry)
 {
+    (void)tex;
+
     float r = 1, g = 1, b = 1, a = 1;
 
     float uv_left = 0;
@@ -155,11 +157,11 @@ void spritebatch::flush()
     }
 
     glBufferData(GL_ARRAY_BUFFER, batch.size() * sizeof(spritebatch_vertex), batch.data(), GL_STREAM_DRAW);
-    glDrawArrays(GL_TRIANGLES, 0, batch.size());
+    glDrawArrays(GL_TRIANGLES, 0, (GLsizei)batch.size());
     batch.clear();
 }
 
 void spritebatch::set_output_dimensions(int w, int h)
 {
-    transform = glm::ortho<float>(0, w, h, 0);
+    transform = glm::ortho<float>(0.0f, (float)w, (float)h, 0.0f);
 }

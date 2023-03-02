@@ -93,13 +93,13 @@ public:
     shader_program& operator=(const shader_program&) = delete;
 
     // moveable
-    shader_program(shader_program&& x)
+    shader_program(shader_program&& x) noexcept
         : handle(x.handle)
     {
         x.handle = 0;
     }
 
-    shader_program& operator=(shader_program&& x)
+    shader_program& operator=(shader_program&& x) noexcept
     {
         if (handle)
         {

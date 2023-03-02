@@ -7,7 +7,7 @@
 
 struct battle_fx
 {
-    size_t owner = -1;
+    size_t owner = SIZE_MAX;
     glm::vec2 pos{}, prev_pos{}, vel{};
     animator anim;
     bool alive = true;

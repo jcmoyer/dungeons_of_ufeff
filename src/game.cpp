@@ -112,14 +112,14 @@ void game::init()
     options->init();
 
     transition(transition_to::mainmenu);
-    //transition(transition_to::gamewin);
+    // transition(transition_to::gamewin);
 
     t_mask = texman.get("assets/mask.png");
 
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_DEPTH_TEST);
-    //glDepthFunc(GL_LEQUAL);
+    // glDepthFunc(GL_LEQUAL);
     glDepthMask(GL_TRUE);
 
     perform_layout();
@@ -202,15 +202,15 @@ void game::run()
     init();
 
     running = true;
-    //Uint32 last = SDL_GetTicks();
-    //Uint32 acc = 0;
-    //Uint32 delay = 1000 / UPDATE_RATE;
+    // Uint32 last = SDL_GetTicks();
+    // Uint32 acc = 0;
+    // Uint32 delay = 1000 / UPDATE_RATE;
 
     double last = SDL_GetTicks();
     double acc = 0;
     double delay = 1000 / (double)UPDATE_RATE;
 
-    //Uint64 p_freq = SDL_GetPerformanceFrequency();
+    // Uint64 p_freq = SDL_GetPerformanceFrequency();
 
     const Uint32 MAX_SKIP_FRAMES = 4;
 
@@ -233,7 +233,7 @@ void game::run()
         // ...or we're doing something dumb like loading assets on the main thread in st_battle ;)
         if (acc > MAX_SKIP_FRAMES * delay)
         {
-            //acc = MAX_SKIP_FRAMES * delay + (acc % delay);
+            // acc = MAX_SKIP_FRAMES * delay + (acc % delay);
             acc = MAX_SKIP_FRAMES * delay;
         }
 
@@ -400,9 +400,9 @@ void game::perform_layout()
 
     immr->set_output_dimensions(INTERNAL_WIDTH, INTERNAL_HEIGHT);
     batch->set_output_dimensions(INTERNAL_WIDTH, INTERNAL_HEIGHT);
-    //water_render->set_output_dimensions(INTERNAL_WIDTH, INTERNAL_HEIGHT);
+    // water_render->set_output_dimensions(INTERNAL_WIDTH, INTERNAL_HEIGHT);
     quad_render->set_output_dimensions(INTERNAL_WIDTH, INTERNAL_HEIGHT);
-    //screen_render->set_output_dimensions(INTERNAL_WIDTH, INTERNAL_HEIGHT);
+    // screen_render->set_output_dimensions(INTERNAL_WIDTH, INTERNAL_HEIGHT);
 }
 
 timer game::create_timer(double duration_sec)

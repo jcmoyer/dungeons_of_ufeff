@@ -64,6 +64,7 @@ struct sk_avenger : public skill
 
     virtual bool can_use(battle_character& owner) const override
     {
+        (void)owner;
         return true;
     }
 
@@ -94,6 +95,7 @@ struct sk_double_throw : public skill
 
     virtual bool can_use(battle_character& owner) const override
     {
+        (void)owner;
         return true;
     }
 
@@ -127,6 +129,7 @@ struct ragworm_meteor : public skill
 
     virtual bool can_use(battle_character& owner) const override
     {
+        (void)owner;
         return true;
     }
 
@@ -156,6 +159,7 @@ struct ragworm_burst : public skill
 
     virtual bool can_use(battle_character& owner) const override
     {
+        (void)owner;
         return true;
     }
 
@@ -183,6 +187,7 @@ struct ragworm_teleport : public skill
 
     virtual bool can_use(battle_character& owner) const override
     {
+        (void)owner;
         return true;
     }
 

@@ -13,6 +13,7 @@ struct battle_field;
 
 struct bc_controller
 {
+    virtual ~bc_controller() {}
     virtual void think(battle_character& self, battle_field& field) = 0;
 };
 

@@ -37,8 +37,8 @@ struct battle_field
     battle_fx_system fx_sys;
     battle_field_bounds bounds;
 
-    size_t player_index = -1;
-    size_t last_enemy_hit = -1;
+    size_t player_index = SIZE_MAX;
+    size_t last_enemy_hit = SIZE_MAX;
 
     glm::vec2 clamp_to_bounds(glm::vec2 v)
     {
@@ -72,9 +72,9 @@ struct battle_field
         projectiles.clear();
         particle_sys.particles.clear();
         fx_sys.effects.clear();
-        player_index = -1;
+        player_index = SIZE_MAX;
         bounds = {};
-        last_enemy_hit = -1;
+        last_enemy_hit = SIZE_MAX;
     }
 
     void init_positions()
@@ -126,17 +126,17 @@ struct battle_field
                     g_audio->play_sound(hurt_sound.c_str());
 
                     player().hitstun_frames += 60;
-                    //player().vel += glm::vec2{ 2 * char1.vel.x, 0 } +glm::vec2{ 0, 3 };
+                    // player().vel += glm::vec2{ 2 * char1.vel.x, 0 } +glm::vec2{ 0, 3 };
                     player().vel += glm::vec2{char1.vel.x, 0} + glm::vec2{0, 3};
                     player().hurt(1);
 
-                    for (int i = 0; i < 10; ++i)
+                    for (int j = 0; j < 10; ++j)
                         particle_sys.emit(player().info->hurt_particle_sprite_id, {player_hitbox.x + player_hitbox.w / 2, player_hitbox.y + player_hitbox.h / 2}, char1.vel * 0.25f + rand_vec2(-1, 1, -1, 1), 0.2f).acc = {0, -0.2f};
                 }
             }
 
-            //for (size_t j = i + 1; j < characters.size(); ++j) {
-            //    battle_character& char2 = characters[j];
+            // for (size_t j = i + 1; j < characters.size(); ++j) {
+            //     battle_character& char2 = characters[j];
 
             //    rectangle subrect;
             //    if (char1.worldspace_hitbox().intersect(char2.worldspace_hitbox(), subrect)) {
@@ -145,10 +145,10 @@ struct battle_field
             //}
         }
 
-        //for (auto& c : characters) {
-        //    if (c.controller) {
-        //        c.controller->think(c, *this);
-        //    }
+        // for (auto& c : characters) {
+        //     if (c.controller) {
+        //         c.controller->think(c, *this);
+        //     }
 
         //    c.update(bounds.floor);
         //    c.pos.x = clamp(c.pos.x, bounds.left, bounds.right);
@@ -188,7 +188,7 @@ struct battle_field
                     std::string hurt_sound = fmt::format("assets/sound/{}.ogg", c.info->hurt_sound);
                     g_audio->play_sound(hurt_sound.c_str());
 
-                    for (int i = 0; i < 10; ++i)
+                    for (int j = 0; j < 10; ++j)
                         particle_sys.emit(c.info->hurt_particle_sprite_id, {char_rect.x + char_rect.w / 2, char_rect.y + char_rect.h / 2}, -p.vel * 0.25f + rand_vec2(-1, 1, -1, 1), 0.2f).acc = {0, -0.2f};
 
                     if (proj_rect.x <= char_rect.x)
@@ -208,7 +208,7 @@ struct battle_field
                     else
                     {
                         c.hitstun_frames += 1;
-                        //c.vel += p.vel + (glm::vec2{ 0, 1 } *(float)c.hitstun_frames); // TODO: cute scaling idea but maybe too over the top :V)
+                        // c.vel += p.vel + (glm::vec2{ 0, 1 } *(float)c.hitstun_frames); // TODO: cute scaling idea but maybe too over the top :V)
                         c.vel += glm::normalize(p.vel) + (glm::vec2{0, 1} * (float)c.hitstun_frames); // TODO: cute scaling idea but maybe too over the top :V)
                         last_enemy_hit = i;
                     }

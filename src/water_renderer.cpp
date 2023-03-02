@@ -83,9 +83,9 @@ void water_renderer::begin(const water_render_parameters& opts)
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
 
     glUniformMatrix4fv(uTransform, 1, GL_FALSE, glm::value_ptr(transform));
-    glUniform1f(uGlobalTime, opts.global_time);
+    glUniform1d(uGlobalTime, opts.global_time);
     glUniform2fv(uWaterDirection, 1, glm::value_ptr(opts.water_direction));
-    glUniform1f(uWaterSpeed, opts.water_speed);
+    glUniform1d(uWaterSpeed, opts.water_speed);
     glUniform2fv(uWaterDriftRange, 1, glm::value_ptr(opts.water_drift_range));
     glUniform1i(uSamplerBase, 0);
     glUniform1i(uSamplerBlend, 1);
@@ -96,7 +96,7 @@ void water_renderer::begin(const water_render_parameters& opts)
 void water_renderer::end()
 {
     glBufferData(GL_ARRAY_BUFFER, batch.size() * sizeof(water_vertex), batch.data(), GL_STREAM_DRAW);
-    glDrawArrays(GL_TRIANGLES, 0, batch.size());
+    glDrawArrays(GL_TRIANGLES, 0, (GLsizei)batch.size());
     batch.clear();
 }
 
@@ -137,5 +137,5 @@ void water_renderer::draw_quad(const texture* tex, const rectangle& src, const r
 
 void water_renderer::set_output_dimensions(int w, int h)
 {
-    transform = glm::ortho<float>(0, w, h, 0);
+    transform = glm::ortho<float>(0.0f, (float)w, (float)h, 0.0f);
 }

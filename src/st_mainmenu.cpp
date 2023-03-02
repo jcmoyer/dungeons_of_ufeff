@@ -22,11 +22,13 @@ void st_mainmenu::update()
 
 void st_mainmenu::render(double a)
 {
+    (void)a;
+
     const auto* tex = state->texman->get("assets/amalgamation.png");
 
     glBindTexture(GL_TEXTURE_2D, tex->tex);
 
-    int offset = -(state->frame_counter % 16);
+    int offset = -(int)(state->frame_counter % 16);
     int cycles = state->frame_counter / 16;
 
     const int BLINK_PERIOD = 32;
@@ -103,6 +105,7 @@ void st_mainmenu::render_game_fade()
 
 void st_mainmenu::enter(gamestate* old)
 {
+    (void)old;
 }
 
 void st_mainmenu::leave()

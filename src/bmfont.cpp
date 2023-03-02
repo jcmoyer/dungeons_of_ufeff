@@ -194,10 +194,6 @@ bmfont_measurement bmfont::measure_string(std::string_view text, const bmfont_gl
     int current_width = 0;
     int current_height = 0;
     int total_height = 0;
-    int num_lines = 1;
-
-    int offs_x = 0;
-    int offs_y = 0;
 
     for (char ch : text)
     {

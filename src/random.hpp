@@ -17,6 +17,6 @@ public:
 private:
     static random& instance();
 
-    //std::random_device dev;
+    // std::random_device dev;
     std::mt19937 dev{(std::mt19937::result_type)time(0)};
 };

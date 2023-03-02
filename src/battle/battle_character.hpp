@@ -15,7 +15,7 @@ struct skill;
 
 struct battle_character
 {
-    size_t id = -1;
+    size_t id = SIZE_MAX;
     direction facing = down;
     glm::vec2 pos{};
     glm::vec2 prev_pos{};
@@ -173,7 +173,7 @@ struct battle_character
     {
         return {(int)(pos.x - 8), (int)(pos.y - 8), 16, 16};
         // TODO: maybe??
-        //return { (int)(pos.x - 3), (int)(pos.y - 3), 6, 6 };
+        // return { (int)(pos.x - 3), (int)(pos.y - 3), 6, 6 };
     }
 
     rectanglef worldspace_interp_rect(double a) const

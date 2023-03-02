@@ -77,6 +77,8 @@ bool try_move_ent(world& wor, entity& e, direction f)
         target_y = e.tile_y() + 1;
         enter_from = up;
         break;
+    default:
+        throw std::runtime_error("try_move_ent: invalid direction");
     }
 
     // don't attempt to move to non-existent tiles
@@ -85,8 +87,6 @@ bool try_move_ent(world& wor, entity& e, direction f)
         e.set_facing(f);
         return false;
     }
-
-    const tile& t = wor.map.at(target_x, target_y);
 
     if (wor.map.collides_from(target_x, target_y, enter_from))
     {
@@ -168,12 +168,12 @@ void st_play::init()
 
 void st_play::handle_event(const SDL_Event& ev)
 {
-    //if (ev.type == SDL_KEYDOWN && ev.key.keysym.sym == SDLK_F5) {
-    //    begin_battle_transition(pick_random_map_encounter());
-    //}
-    //if (ev.type == SDL_KEYDOWN && ev.key.keysym.sym == SDLK_F6) {
-    //    sub = none;
-    //}
+    // if (ev.type == SDL_KEYDOWN && ev.key.keysym.sym == SDLK_F5) {
+    //     begin_battle_transition(pick_random_map_encounter());
+    // }
+    // if (ev.type == SDL_KEYDOWN && ev.key.keysym.sym == SDLK_F6) {
+    //     sub = none;
+    // }
 
     if (sub == map_intro_fadein || sub == map_intro_title || sub == map_intro_subtitle)
     {
@@ -442,7 +442,7 @@ void st_play::render(double a)
             else
             {
                 // immediate draw
-                //float brightness = wor.map.bright_map[y * wor.map.width + x];
+                // float brightness = wor.map.bright_map[y * wor.map.width + x];
                 state->batch->draw_quad(t_atlas, src, dest);
             }
         }
@@ -470,7 +470,7 @@ void st_play::render(double a)
     waterfall_params.water_drift_range = {0, 0};
 
     water_render_parameters lava_params = water_params;
-    lava_params.blend_amount = 0.5f + 0.5f * sin(water_time * 2.f);
+    lava_params.blend_amount = 0.5f + 0.5f * sin((float)water_time * 2.f);
     lava_params.water_drift_scale = {16, 16};
 
     water_render->begin(water_params);
@@ -539,8 +539,8 @@ void st_play::render(double a)
             // intentionally using frame_counter here to make the flickering more chaotic,
             // but still deterministic
             // also seeded by world position so different light sources aren't synchronized
-            const float a = static_cast<float>(e.world_x + e.world_y + state->frame_counter);
-            float d_flicker = e.light_state.light_flicker_radius * cos(a);
+            const float angle = static_cast<float>(e.world_x + e.world_y + state->frame_counter);
+            float d_flicker = e.light_state.light_flicker_radius * cos(angle);
 
             light_cmds.push_back({static_cast<int>(e.world_x) - lerp_cam.left(), static_cast<int>(e.world_y) - lerp_cam.top(), d_flicker + e.light_state.light_radius});
         }
@@ -880,8 +880,8 @@ void st_play::emit_battle_transition_particles()
     for (int i = 0; i < 200; ++i)
     {
         battle_transition_particle& p = transition_particles.emplace_back();
-        //p.pos = p.prev_pos = { INTERNAL_WIDTH + random::rand_real(0, INTERNAL_WIDTH), INTERNAL_HEIGHT + random::rand_real(0, INTERNAL_HEIGHT) };
-        //p.vel = rand_vec2(-2, -1, -1, -0.3) * 16.f;
+        // p.pos = p.prev_pos = { INTERNAL_WIDTH + random::rand_real(0, INTERNAL_WIDTH), INTERNAL_HEIGHT + random::rand_real(0, INTERNAL_HEIGHT) };
+        // p.vel = rand_vec2(-2, -1, -1, -0.3) * 16.f;
         p.pos = p.prev_pos = {random::rand_real(0, INTERNAL_WIDTH), INTERNAL_HEIGHT + random::rand_real(0, INTERNAL_HEIGHT)};
         p.vel = rand_vec2(-0.5, 0.5, -1, -0.5) * 16.f;
     }

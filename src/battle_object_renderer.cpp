@@ -200,6 +200,6 @@ void battle_object_renderer::begin(const glm::mat4& view, const glm::mat4& proje
 void battle_object_renderer::end()
 {
     glBufferData(GL_ARRAY_BUFFER, batch.size() * sizeof(battle_object_vertex), batch.data(), GL_STREAM_DRAW);
-    glDrawArrays(GL_TRIANGLES, 0, batch.size());
+    glDrawArrays(GL_TRIANGLES, 0, (GLsizei)batch.size());
     batch.clear();
 }

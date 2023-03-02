@@ -15,7 +15,7 @@ struct audio_buffer
     std::atomic<int> sample_count = 0;
 
     audio_buffer() = default;
-    audio_buffer(audio_buffer&& rhs)
+    audio_buffer(audio_buffer&& rhs) noexcept
         : channels{rhs.channels}, sample_rate{rhs.sample_rate}, samples{rhs.samples}, sample_count{rhs.sample_count.load()}
     {
     }
@@ -30,7 +30,7 @@ struct audio_parameters
 
 struct audio_track
 {
-    audio_buffer* buffer;
+    audio_buffer* buffer = nullptr;
     int cursor = 0;
     bool loop = false;
     bool done = false;

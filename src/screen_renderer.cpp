@@ -72,8 +72,7 @@ void screen_renderer::draw_quad(const rectangle& dest)
         {left, top, 0, 0},
         {left, bottom, 0, 1},
         {right, bottom, 1, 1},
-        {right, top, 1, 0}
-    };
+        {right, top, 1, 0}};
 
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STREAM_DRAW);
@@ -93,5 +92,5 @@ void screen_renderer::begin(float mask_effect)
 
 void screen_renderer::set_output_dimensions(int w, int h)
 {
-    transform = glm::ortho<float>(0, w, h, 0);
+    transform = glm::ortho<float>(0, (float)w, (float)h, 0);
 }

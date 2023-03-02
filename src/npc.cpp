@@ -11,8 +11,8 @@ void hub_spawnroom_npc(npc_context& context)
     context.say("Something isn't right...");
     context.say("The elder went into the East Tower\na while ago, but he hasn't come back yet.");
     context.say("I think someone should check on him.");
-    //context.say("By the way, did you know that you can\nattack by pressing X and jump by pressing ALT?");
-    //context.say("At least, I read that somewhere, but I\nhaven't figured out what it means yet.");
+    // context.say("By the way, did you know that you can\nattack by pressing X and jump by pressing ALT?");
+    // context.say("At least, I read that somewhere, but I\nhaven't figured out what it means yet.");
 }
 
 void generic_door(npc_context& context)

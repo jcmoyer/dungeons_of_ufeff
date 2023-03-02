@@ -106,21 +106,21 @@ obj_mesh load_obj_mesh(std::istream& input)
 
 //
 //
-//function parseFaceVertex(s: string) : [number, number] {
+// function parseFaceVertex(s: string) : [number, number] {
 //    const parts = s.split('/');
 //    return[parseInt(parts[0]) - 1, parseInt(parts[1]) - 1];
 //}
 //
-//export type Vertex = [number, number, number];
-//export type TexCoord = [number, number];
-//export type Face = [[number, number], [number, number], [number, number]];
-//export type Mesh = {
+// export type Vertex = [number, number, number];
+// export type TexCoord = [number, number];
+// export type Face = [[number, number], [number, number], [number, number]];
+// export type Mesh = {
 //  vertices: Vertex[];
 //  texCoords: TexCoord[];
 //  faces: Face[];
 //}
 //
-//export function loadObj(data: string) : Mesh{
+// export function loadObj(data: string) : Mesh{
 //  const lines = data.split(/ \n / g);
 //
 //  const vertices : Vertex[] = [];
@@ -156,7 +156,7 @@ obj_mesh load_obj_mesh(std::istream& input)
 //  };
 //}
 //
-//export function buildInterleavedMesh(mesh: Mesh) : number[]{
+// export function buildInterleavedMesh(mesh: Mesh) : number[]{
 //  const meshVerts : number[] = [];
 //  for (let i = 0; i < mesh.faces.length; ++i) {
 //    const face = mesh.faces[i];

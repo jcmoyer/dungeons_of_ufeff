@@ -112,6 +112,8 @@ void sk_flash_jump::use(battle_field& field, battle_character& owner)
 
 void sk_flash_jump::update(battle_field& field, battle_character& owner)
 {
+    (void)field;
+
     if (owner.grounded)
     {
         remaining = 2;
@@ -158,6 +160,9 @@ void sk_avenger::update(battle_field& field, battle_character& owner)
 
 void sk_avenger::use(battle_field& field, battle_character& owner)
 {
+    (void)field;
+    (void)owner;
+
     g_audio->play_sound("assets/sound/avenger.ogg");
     windup_counter = 15;
     thrown = false;
@@ -208,6 +213,8 @@ battle_projectile_behavior bpb_burst{glm::vec2{0, 0}, bpb_burst_update};
 
 void ragworm_burst::use(battle_field& field, battle_character& owner)
 {
+    (void)field;
+    (void)owner;
     knives = 10;
 }
 
@@ -254,4 +261,6 @@ void ragworm_teleport::use(battle_field& field, battle_character& owner)
 
 void ragworm_teleport::update(battle_field& field, battle_character& owner)
 {
+    (void)field;
+    (void)owner;
 }

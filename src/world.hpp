@@ -55,8 +55,8 @@ struct entity
     uint32_t world_x = 0, world_y = 0;
     uint32_t prev_world_x = 0, prev_world_y = 0;
     uint32_t move_speed = 4;
-    uint32_t interact_script = -1;
-    uint32_t sprite_id = -1;
+    uint32_t interact_script = UINT32_MAX;
+    uint32_t sprite_id = UINT32_MAX;
     entity_type type = none;
     bool open = false;
     portal portal_state;
@@ -97,7 +97,7 @@ struct entity
         else if (type == et_switch)
         {
             set_switchstate(switch_state.on);
-            //set_animation_from_facing();
+            // set_animation_from_facing();
         }
     }
 
@@ -226,8 +226,8 @@ struct entity
 
     void set_animation_from_doorstate()
     {
-        const char* name = open ? "open" : "closed";
-        anim.set_animation(name);
+        const char* new_name = open ? "open" : "closed";
+        anim.set_animation(new_name);
     }
 
     void set_doorstate(bool is_open)
@@ -303,9 +303,9 @@ struct world
     float water_drift_x = 0;
     float water_drift_y = 0;
     float water_speed = 0;
-    size_t player_index = -1;
+    size_t player_index = SIZE_MAX;
     bool dark = false;
-    uint32_t encounter_set_id = -1;
+    uint32_t encounter_set_id = UINT32_MAX;
     std::string battle_field_name = "";
 
     bool has_encounters() const
@@ -482,7 +482,6 @@ inline std::string read_string(std::ifstream& input)
 
 inline variant read_variant(std::ifstream& input)
 {
-    variant val;
     uint8_t type = read_u8(input);
     if (type == 0)
     {
@@ -552,7 +551,7 @@ inline world load_world(std::string_view filename)
         input.read(reinterpret_cast<char*>(&obj.world_x), sizeof(obj.world_x));
         input.read(reinterpret_cast<char*>(&obj.world_y), sizeof(obj.world_y));
         uint32_t prop_count = read_u32(input);
-        for (uint32_t i = 0; i < prop_count; ++i)
+        for (uint32_t j = 0; j < prop_count; ++j)
         {
             std::string name = read_string(input);
             variant val = read_variant(input);
@@ -619,8 +618,8 @@ inline world load_world(std::string_view filename)
     }
 
     // TODO: maybe we want to do this to make cliffs have more depth?
-    //t.bright_map.resize(size);
-    //for (int y = 0; y < wor.map.height; ++y) {
+    // t.bright_map.resize(size);
+    // for (int y = 0; y < wor.map.height; ++y) {
     //    for (int x = 0; x < wor.map.width; ++x) {
     //        float& b = wor.map.bright_map[y * wor.map.width + x];
     //        if (wor.map.at(x, y).id != 39) {

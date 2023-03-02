@@ -105,11 +105,11 @@ void quad_renderer::begin()
 void quad_renderer::end()
 {
     glBufferData(GL_ARRAY_BUFFER, batch.size() * sizeof(quad_vertex), batch.data(), GL_STREAM_DRAW);
-    glDrawArrays(GL_TRIANGLES, 0, batch.size());
+    glDrawArrays(GL_TRIANGLES, 0, (GLsizei)batch.size());
     batch.clear();
 }
 
 void quad_renderer::set_output_dimensions(int w, int h)
 {
-    transform = glm::ortho<float>(0, w, h, 0);
+    transform = glm::ortho<float>(0.0f, (float)w, (float)h, 0.0f);
 }

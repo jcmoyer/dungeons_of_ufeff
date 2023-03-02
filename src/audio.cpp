@@ -2,16 +2,9 @@
 
 #include <cassert>
 #include <filesystem>
+#include <stb_vorbis.h>
 
 #include "mathutil.hpp"
-#include "stb_vorbis.c"
-
-static audio_buffer load_audio(const char* filename)
-{
-    audio_buffer buffer;
-    buffer.sample_count = stb_vorbis_decode_filename(filename, &buffer.channels, &buffer.sample_rate, &buffer.samples);
-    return std::move(buffer);
-}
 
 static void load_audio(const char* filename, audio_buffer& buffer)
 {
@@ -25,7 +18,7 @@ void audio_system::init()
     // the audio callback or decode thread
     tracks.reserve(1024);
 
-    SDL_AudioSpec want, spec;
+    SDL_AudioSpec want;
     SDL_memset(&want, 0, sizeof(want));
     want.freq = 44100;
     want.format = AUDIO_S16;
@@ -52,7 +45,7 @@ void audio_system::init()
             lk.unlock();
 
             // load requests sequentially and put them into the tracklist
-            for (const decode_request& req : local_queue)
+            for (decode_request& req : local_queue)
             {
                 // empty filename kills the thread
                 if (req.filename.size() == 0)
@@ -62,7 +55,7 @@ void audio_system::init()
                 t.buffer = get_or_load(req.filename.c_str());
                 t.loop = req.loop;
                 t.parameters = std::move(req.parameters);
-                std::scoped_lock lk(tracks_m);
+                std::scoped_lock lk_tracks(tracks_m);
                 tracks.push_back(std::move(t));
             }
 
@@ -142,7 +135,6 @@ void audio_system::audio_callback(void* userdata, Uint8* stream, int len)
 
         short* data = data_base;
 
-        int written = 0;
         for (int samp = 0; samp < len / sizeof(short); ++samp)
         {
             if (track.done)

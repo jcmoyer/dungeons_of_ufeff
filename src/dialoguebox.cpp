@@ -34,6 +34,8 @@ struct dialogue_computed_rects
 
 dialogue_computed_rects compute_dialogue_rects(const dialogue_info& di, std::string_view text)
 {
+    (void)di;
+
     bmfont font;
     auto measurement = font.measure_string(text, glyph_map_font_white_small::instance());
     rectangle text_rect{0, 0, measurement.width, measurement.height};

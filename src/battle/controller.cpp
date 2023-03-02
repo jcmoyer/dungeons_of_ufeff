@@ -93,7 +93,7 @@ void bat_controller::think(battle_character& self, battle_field& field)
         {
             if (random::chance(0.5f))
             {
-                //self.fly_towards(target);
+                // self.fly_towards(target);
             }
         }
     }

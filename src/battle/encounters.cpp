@@ -1,4 +1,5 @@
 #include "encounters.hpp"
+
 #include "../random.hpp"
 
 // clang-format off
@@ -30,13 +31,16 @@ encounter_set enc_lair{
 };
 // clang-format on
 
-const encounter& encounter_set::random_encounter() const {
+const encounter& encounter_set::random_encounter() const
+{
     size_t i = (size_t)random::rand_int(0, (int)encounters.size() - 1);
     return encounters[i];
 }
 
-const encounter_set& get_encounter_set(uint32_t id) {
-    switch (id) {
+const encounter_set& get_encounter_set(uint32_t id)
+{
+    switch (id)
+    {
     case 0:
         return enc_dungeon;
     case 1:
@@ -49,7 +53,7 @@ const encounter_set& get_encounter_set(uint32_t id) {
     }
 }
 
-encounter get_final_boss_encounter() {
-    return { {BCI_RAGWORM, BCI_NULL, BCI_NULL, BCI_NULL , BCI_NULL, BCI_NULL, BCI_NULL , BCI_NULL} };
-
+encounter get_final_boss_encounter()
+{
+    return {{BCI_RAGWORM, BCI_NULL, BCI_NULL, BCI_NULL, BCI_NULL, BCI_NULL, BCI_NULL, BCI_NULL}};
 }

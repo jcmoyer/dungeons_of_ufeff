@@ -52,8 +52,10 @@ void st_battlestats::update()
 
 void st_battlestats::render(double a)
 {
-    //glClearColor(0x14 / 255.f,
-    //0x0c / 255.f, 0x1c / 255.f, 1.0f);
+    (void)a;
+
+    // glClearColor(0x14 / 255.f,
+    // 0x0c / 255.f, 0x1c / 255.f, 1.0f);
     glClearColor(0, 0, 0, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
@@ -120,8 +122,8 @@ void st_battlestats::render_fade()
         return;
     }
 
-    const double out = clamp(fade_timer.progress(state->frame_counter), 0.0, 1.0);
-    const double in = 1.0 - out;
+    const float out = clamp((float)fade_timer.progress(state->frame_counter), 0.0f, 1.0f);
+    const float in = 1.0f - out;
 
     state->quad_render->begin();
     state->quad_render->draw_quad({0, 0, INTERNAL_WIDTH, INTERNAL_HEIGHT}, 0, 0, 0, sub == fade_in ? in : out);
@@ -130,6 +132,8 @@ void st_battlestats::render_fade()
 
 void st_battlestats::enter(gamestate* old)
 {
+    (void)old;
+
     state->audio->play_sound("assets/sound/fanfare.ogg");
 
     old_stats_snapshot = state->session->stats;
