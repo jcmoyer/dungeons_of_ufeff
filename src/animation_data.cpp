@@ -2,16 +2,21 @@
 
 // clang-format off
 
-#define STANDARD_ANIM(name, x, y)        \
-        {                                \
-            name,                        \
-            animation {{                 \
-                {{x + 00, y, 16, 16}, 8},\
-                {{x + 16, y, 16, 16}, 8},\
-                {{x + 32, y, 16, 16}, 8},\
-                {{x + 16, y, 16, 16}, 8},\
-            }}                           \
-        }
+// TODO: Clean up this macro mess, probably just load this from disk. Future me regrets everything.
+
+#define STANDARD_ANIM(name, x, y)               \
+    {                                           \
+        name,                                   \
+        animation {                             \
+            {                                   \
+                {{x + 00, y, 16, 16}, 8},       \
+                {{x + 16, y, 16, 16}, 8},       \
+                {{x + 32, y, 16, 16}, 8},       \
+                {{x + 16, y, 16, 16}, 8},       \
+            },                                  \
+            ""                                  \
+        }                                       \
+    }
 
 #define STANDARD_DIRECTIONAL(x, y)        \
         STANDARD_ANIM("down",  x, y + 00),\
@@ -19,12 +24,13 @@
         STANDARD_ANIM("right", x, y + 32),\
         STANDARD_ANIM("up",    x, y + 48) \
 
-#define SINGLE_FRAME(name, x, y)\
-    {                           \
-        name,                   \
-        animation {{            \
-            {{x, y, 16, 16}, 8} \
-        }}                      \
+#define SINGLE_FRAME(name, x, y)                \
+    {                                           \
+        name,                                   \
+        animation {                             \
+            { {{x, y, 16, 16}, 8} },            \
+            ""                                  \
+        }                                       \
     }
 
 const animation_set SPRITES[]{
@@ -44,7 +50,7 @@ const animation_set SPRITES[]{
     /* 09 */ {{ SINGLE_FRAME("closed", 176, 0), SINGLE_FRAME("open", 176, 48), {"closed-open", animation{{ {{176,16,16,16}, 1}, {{176,32,16,16}, 1} }, "open" } } }},
 
     // yellow torch
-    /* 10 */ {{ {"", animation{{ {{128,64,16,16}, 2}, {{128 + 16,64,16,16}, 2}, {{128 + 32,64,16,16}, 2}, {{128 + 16,64,16,16}, 2} } } } }},
+    /* 10 */ {{ {"", animation{{ {{128,64,16,16}, 2}, {{128 + 16,64,16,16}, 2}, {{128 + 32,64,16,16}, 2}, {{128 + 16,64,16,16}, 2} }, "" } } }},
 
     // unlit torch
     /* 11 */ {{ SINGLE_FRAME("", 80, 160) }},
@@ -56,7 +62,7 @@ const animation_set SPRITES[]{
     }},
 
     // flame (battle sprite)
-    /* 13 */ {{ {"", animation{{ {{112,160,16,16}, 2}, {{112 + 16,160,16,16}, 2}, {{112 + 32,160,16,16}, 2}, {{112 + 16,160,16,16}, 2} } } } }},
+    /* 13 */ {{ {"", animation{{ {{112,160,16,16}, 2}, {{112 + 16,160,16,16}, 2}, {{112 + 32,160,16,16}, 2}, {{112 + 16,160,16,16}, 2} }, "" } } }},
 
     // spike (battle sprite)
     {{ SINGLE_FRAME("", 96, 160) }},
@@ -74,22 +80,22 @@ const animation_set SPRITES[]{
     {{ {"", animation{{ {{160,192,16,16}, 2}, {{176,192,16,16}, 2}, {{192,192,16,16}, 2}, {{208,192,16,16}, 2}, {{224,192,16,16}, 2}, }, "dead"}}, SINGLE_FRAME("dead", 0, 0) }},
     
     // avenger (battle sprite) the magic of mixels... sixels.... or something...
-    {{ {"", animation{{ {{160,208,17,17}, 2}, {{192,208,17,17}, 2}, } }} }},
+    {{ {"", animation{{ {{160,208,17,17}, 2}, {{192,208,17,17}, 2}, }, "" }} }},
 
     // chest (play state) - yes this is implemented as a switch...
     {{ SINGLE_FRAME("off", 224, 0), SINGLE_FRAME("on", 224, 48), {"off-on", animation{{ {{224,16,16,16}, 1}, {{224,32,16,16}, 1} }, "on" } } }},
 
     // slime blood
-    {{ {"", animation{{ {{ {150, 150, 4, 4}, 2  }}} }} }},
+    {{ {"", animation{{ {{ {150, 150, 4, 4}, 2  }}}, "" }} }},
     // bone particle
-    { { {"", animation{{ {{ {160, 144, 4, 3}, 2  }}} }} }},
+    { { {"", animation{{ {{ {160, 144, 4, 3}, 2  }}}, "" }} }},
     // ghost particle
-    { { {"", animation{{ {{ {176, 144, 3, 3}, 2  }}} }} }},
+    { { {"", animation{{ {{ {176, 144, 3, 3}, 2  }}}, "" }} }},
 
     // gold spike (battle sprite)
     {{ SINGLE_FRAME("", 192, 144) }},
 
-    /* 25 */ {{ {"", animation{{ {{224,192,16,16}, 2}, {{224 + 16,192,16,16}, 2}, {{224 + 32,192,16,16}, 2}, {{224 + 16,192,16,16}, 2} } } } }},
+    /* 25 */ {{ {"", animation{{ {{224,192,16,16}, 2}, {{224 + 16,192,16,16}, 2}, {{224 + 32,192,16,16}, 2}, {{224 + 16,192,16,16}, 2} }, "" } } }},
 
 
 

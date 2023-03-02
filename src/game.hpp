@@ -117,8 +117,6 @@ private:
     std::unique_ptr<spritebatch> batch;
     std::unique_ptr<quad_renderer> quad_render;
 
-    bool render_solid = true;
-
     std::unique_ptr<st_play> play;
     std::unique_ptr<st_mainmenu> mainmenu;
     std::unique_ptr<st_battle> battle;

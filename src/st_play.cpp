@@ -419,9 +419,9 @@ void st_play::render(double a)
         for (int x = min_tile_x; x < max_tile_x; ++x)
         {
             tile& t = wor.map.base.at(y * wor.map.width + x);
-            uint32_t tid = t.id;
-            if (tid == -1)
+            if (t.invalid())
                 continue;
+            uint32_t tid = t.id;
             int ysrc = static_cast<int>(tid / 32);
             int xsrc = static_cast<int>(tid % 32);
             rectangle src = {xsrc * 16, ysrc * 16, 16, 16};
@@ -519,9 +519,9 @@ void st_play::render(double a)
         for (int x = min_tile_x; x < max_tile_x; ++x)
         {
             tile& t = wor.map.detail.at(y * wor.map.width + x);
-            uint32_t tid = t.id;
-            if (tid == -1)
+            if (t.invalid())
                 continue;
+            uint32_t tid = t.id;
             int ysrc = static_cast<int>(tid / 32);
             int xsrc = static_cast<int>(tid % 32);
             rectangle src = {xsrc * 16, ysrc * 16, 16, 16};
@@ -583,9 +583,9 @@ void st_play::render(double a)
         for (int x = min_tile_x; x < max_tile_x; ++x)
         {
             tile& t = wor.map.fringe.at(y * wor.map.width + x);
-            uint32_t tid = t.id;
-            if (tid == -1)
+            if (t.invalid())
                 continue;
+            uint32_t tid = t.id;
             int ysrc = static_cast<int>(tid / 32);
             int xsrc = static_cast<int>(tid % 32);
             rectangle src = {xsrc * 16, ysrc * 16, 16, 16};
@@ -637,7 +637,7 @@ void st_play::process_scheduled_scripts()
     }
 
     // scripts can append more scripts to the collection, invalidating iterators; we have to take a different approach
-    for (size_t i = scheduled_scripts.size() - 1; i != -1; --i)
+    for (size_t i = scheduled_scripts.size() - 1; i < scheduled_scripts.size(); --i)
     {
         if (scheduled_scripts[i].t.expired(state->frame_counter))
         {
@@ -711,7 +711,7 @@ void st_play::render_battle_fade(double a)
 
     glBindTexture(GL_TEXTURE_2D, t_atlas->tex);
     state->batch->begin();
-    for (int i = 0; i < transition_particles.size(); ++i)
+    for (size_t i = 0; i < transition_particles.size(); ++i)
     {
         glm::vec2 lerp_pos = glm::lerp(transition_particles[i].prev_pos, transition_particles[i].pos, (float)a);
         state->batch->draw_quad(t_atlas, {144, 128, 16, 16}, {(int)lerp_pos.x, (int)lerp_pos.y, 32, 32});

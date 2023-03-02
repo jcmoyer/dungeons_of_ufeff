@@ -49,14 +49,17 @@ enum entity_type
 
 struct entity
 {
+    static constexpr uint32_t INVALID_SCRIPT = UINT32_MAX;
+    static constexpr uint32_t INVALID_SPRITE = UINT32_MAX;
+
     std::string name;
     move_state mstate = IDLE;
     direction face = down;
     uint32_t world_x = 0, world_y = 0;
     uint32_t prev_world_x = 0, prev_world_y = 0;
     uint32_t move_speed = 4;
-    uint32_t interact_script = UINT32_MAX;
-    uint32_t sprite_id = UINT32_MAX;
+    uint32_t interact_script = INVALID_SCRIPT;
+    uint32_t sprite_id = INVALID_SPRITE;
     entity_type type = none;
     bool open = false;
     portal portal_state;
@@ -73,12 +76,12 @@ struct entity
 
     bool is_interactive() const
     {
-        return interact_script != -1;
+        return interact_script != INVALID_SCRIPT;
     }
 
     bool has_sprite() const
     {
-        return sprite_id != -1;
+        return sprite_id != INVALID_SPRITE;
     }
 
     void set_sprite_id(uint32_t id)
@@ -158,6 +161,8 @@ struct entity
             {
                 mstate = IDLE;
             }
+            break;
+        default:
             break;
         }
 
@@ -293,6 +298,9 @@ inline uint32_t world_to_tile(uint32_t x)
 
 struct world
 {
+    static constexpr size_t INVALID_PLAYER_INDEX = SIZE_MAX;
+    static constexpr uint32_t INVALID_ENCOUNTER = UINT32_MAX;
+
     tilemap map;
     std::vector<entity> ents;
     std::string map_name = "Unnamed Zone";
@@ -303,14 +311,14 @@ struct world
     float water_drift_x = 0;
     float water_drift_y = 0;
     float water_speed = 0;
-    size_t player_index = SIZE_MAX;
+    size_t player_index = INVALID_PLAYER_INDEX;
     bool dark = false;
-    uint32_t encounter_set_id = UINT32_MAX;
+    uint32_t encounter_set_id = INVALID_ENCOUNTER;
     std::string battle_field_name = "";
 
     bool has_encounters() const
     {
-        return encounter_set_id != -1;
+        return encounter_set_id != INVALID_ENCOUNTER;
     }
 
     std::size_t spawn_player(uint32_t tile_x, uint32_t tile_y)
@@ -329,7 +337,7 @@ struct world
 
     entity& player()
     {
-        assert(player_index != -1);
+        assert(player_index != INVALID_PLAYER_INDEX);
         return ents[player_index];
     }
 

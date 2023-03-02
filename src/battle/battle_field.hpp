@@ -161,7 +161,7 @@ struct battle_field
             rectangle proj_rect = p.worldspace_hitbox();
             rectangle unused;
 
-            assert(p.owner != -1);
+            assert(p.owner != battle_projectile::INVALID_OWNER);
             bool is_monster_owned = p.owner != player_index;
 
             for (size_t i = 0; i < characters.size(); ++i)
@@ -252,7 +252,7 @@ struct battle_field
 
     battle_character& player()
     {
-        assert(player_index != -1);
+        assert(player_index != SIZE_MAX);
         return characters[player_index];
     }
 

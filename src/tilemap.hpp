@@ -83,7 +83,7 @@ inline collision_flags get_collision_flags(uint32_t tile_id)
 
 struct tile
 {
-    uint32_t id;
+    uint32_t id = UINT32_MAX;
 
     bool collides_from(direction d) const
     {
@@ -124,7 +124,7 @@ struct tile
 
     bool invalid() const
     {
-        return id == -1;
+        return id == UINT32_MAX;
     }
 };
 

@@ -177,6 +177,7 @@ struct shared_state
 class gamestate
 {
 public:
+    virtual ~gamestate() {}
     virtual void enter(gamestate* old) = 0;
     virtual void leave() = 0;
     virtual void init() = 0;

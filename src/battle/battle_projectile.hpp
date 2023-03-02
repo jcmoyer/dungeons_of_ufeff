@@ -21,7 +21,9 @@ struct battle_projectile_behavior
 
 struct battle_projectile
 {
-    size_t owner = SIZE_MAX;
+    static constexpr size_t INVALID_OWNER = SIZE_MAX;
+
+    size_t owner = INVALID_OWNER;
 
     glm::vec2 pos, prev_pos, vel;
     animator anim;

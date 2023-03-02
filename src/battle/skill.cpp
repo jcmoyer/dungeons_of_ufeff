@@ -95,6 +95,8 @@ void sk_flash_jump::use(battle_field& field, battle_character& owner)
     case right:
         owner.vel.x = 7;
         break;
+    default:
+        break;
     }
     owner.vel.y += 2;
 

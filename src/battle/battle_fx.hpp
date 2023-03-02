@@ -39,7 +39,7 @@ struct battle_fx
 
     bool attached() const
     {
-        return owner != -1;
+        return owner != SIZE_MAX;
     }
 
     glm::vec2 interp_pos(double a) const

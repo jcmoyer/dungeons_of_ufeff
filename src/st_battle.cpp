@@ -276,7 +276,7 @@ void st_battle::render_health_bar()
 
     render_bar(*state->batch, *state->font, *state->quad_render, player_health_bar, life, 0xd04648ff, b_field.player().life / (double)state->session->stats.max_life());
 
-    if (b_field.last_enemy_hit != -1)
+    if (b_field.last_enemy_hit != SIZE_MAX)
     {
         const int32_t e_life = b_field.characters[b_field.last_enemy_hit].life;
         const int32_t e_max_life = b_field.characters[b_field.last_enemy_hit].info->max_life;

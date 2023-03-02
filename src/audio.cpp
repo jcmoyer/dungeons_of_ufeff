@@ -135,7 +135,7 @@ void audio_system::audio_callback(void* userdata, Uint8* stream, int len)
 
         short* data = data_base;
 
-        for (int samp = 0; samp < len / sizeof(short); ++samp)
+        for (size_t samp = 0; samp < len / sizeof(short); ++samp)
         {
             if (track.done)
                 break;

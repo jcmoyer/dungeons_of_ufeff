@@ -29,5 +29,4 @@ private:
     GLint uSampler;
     GLint uMask;
     GLint uMaskEffect;
-    GLint uMaskScale;
 };

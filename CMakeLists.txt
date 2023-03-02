@@ -38,11 +38,14 @@ set(ufeffjam_srcs
   "src/st_options.cpp")
 
 add_executable(ufeffjam ${ufeffjam_srcs})
-target_link_libraries(ufeffjam SDL2 SDL2main fmt gl3w glm stb_vorbis stb_image)
+
+target_link_libraries(ufeffjam SDL2 SDL2main fmt gl3w glm::glm stb_vorbis stb_image)
 set_property(TARGET ufeffjam PROPERTY CXX_STANDARD 17)
 
 if(MSVC)
     target_compile_options(ufeffjam PRIVATE /W4 /WX /external:W0 /external:anglebrackets)
+else()
+    target_compile_options(ufeffjam PRIVATE -Wall -Wextra -pedantic -Werror)
 endif()
 
 install(TARGETS ufeffjam SDL2 RUNTIME DESTINATION .)
