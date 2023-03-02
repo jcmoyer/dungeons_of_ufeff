@@ -1,12 +1,14 @@
 #pragma once
 
 #include <glm/mat4x4.hpp>
+
 #include "shader.hpp"
 
 struct texture;
 struct rectangle;
 
-struct battle_object_vertex {
+struct battle_object_vertex
+{
     float x, y, z;
     float u, v;
     float color_mult;
@@ -14,7 +16,8 @@ struct battle_object_vertex {
 };
 
 // implements 2.5d rendering of objects
-class battle_object_renderer {
+class battle_object_renderer
+{
 public:
     battle_object_renderer();
 

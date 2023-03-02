@@ -1,31 +1,35 @@
 #pragma once
 
 #include <SDL.h>
-#include <mutex>
-#include <vector>
-#include <unordered_map>
 #include <atomic>
 #include <memory>
+#include <mutex>
+#include <unordered_map>
+#include <vector>
 
-struct audio_buffer {
+struct audio_buffer
+{
     int channels = 0;
     int sample_rate = 0;
     short* samples = nullptr;
     std::atomic<int> sample_count = 0;
 
     audio_buffer() = default;
-    audio_buffer(audio_buffer&& rhs) : channels{rhs.channels}, sample_rate{rhs.sample_rate}, samples{rhs.samples}, sample_count{rhs.sample_count.load()} {
-
+    audio_buffer(audio_buffer&& rhs)
+        : channels{rhs.channels}, sample_rate{rhs.sample_rate}, samples{rhs.samples}, sample_count{rhs.sample_count.load()}
+    {
     }
 };
 
-struct audio_parameters {
+struct audio_parameters
+{
     std::atomic<float> volume = 1.f;
     std::atomic<bool> done = false;
     std::atomic<bool> paused = false;
 };
 
-struct audio_track {
+struct audio_track
+{
     audio_buffer* buffer;
     int cursor = 0;
     bool loop = false;
@@ -33,13 +37,15 @@ struct audio_track {
     std::shared_ptr<audio_parameters> parameters;
 };
 
-struct decode_request {
+struct decode_request
+{
     std::string filename;
     bool loop;
     std::shared_ptr<audio_parameters> parameters;
 };
 
-class audio_system {
+class audio_system
+{
 public:
     audio_system() = default;
     audio_system(const audio_system&) = delete;

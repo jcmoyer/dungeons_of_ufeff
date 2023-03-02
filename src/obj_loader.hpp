@@ -1,56 +1,70 @@
 #pragma once
 
-#include <vector>
-#include <string>
 #include <fstream>
+#include <string>
+#include <vector>
 
-struct obj_vertex {
+struct obj_vertex
+{
     float x, y, z;
 };
 
-struct obj_texcoord {
+struct obj_texcoord
+{
     float u, v;
 };
 
-struct obj_vertex_normal {
+struct obj_vertex_normal
+{
     float x, y, z;
 };
 
-struct obj_face {
+struct obj_face
+{
     int v1, t1, n1;
     int v2, t2, n2;
     int v3, t3, n3;
 };
 
-struct obj_mesh {
+struct obj_mesh
+{
     std::vector<obj_vertex> vertices;
     std::vector<obj_texcoord> texcoords;
     std::vector<obj_vertex_normal> normals;
     std::vector<obj_face> faces;
 };
 
-obj_mesh load_obj_mesh(std::istream& input) {
+obj_mesh load_obj_mesh(std::istream& input)
+{
     obj_mesh mesh;
 
-    while (input) {
+    while (input)
+    {
         std::string type;
         input >> type;
 
-        if (type == "v") {
+        if (type == "v")
+        {
             obj_vertex& vert = mesh.vertices.emplace_back();
             input >> vert.x;
             input >> vert.y;
             input >> vert.z;
-        } else if (type == "vt") {
+        }
+        else if (type == "vt")
+        {
             obj_texcoord& vert = mesh.texcoords.emplace_back();
             input >> vert.u;
             input >> vert.v;
-        } else if (type == "vn") {
+        }
+        else if (type == "vn")
+        {
             obj_vertex_normal& norm = mesh.normals.emplace_back();
             input >> norm.x;
             input >> norm.y;
             input >> norm.z;
-        } else if (type == "f") {
+        }
+        else if (type == "f")
+        {
             obj_face& face = mesh.faces.emplace_back();
             input >> face.v1;
             input.get();
@@ -79,7 +93,9 @@ obj_mesh load_obj_mesh(std::istream& input) {
             --face.n1;
             --face.n2;
             --face.n3;
-        } else {
+        }
+        else
+        {
             // ignore
             std::getline(input, type);
         }

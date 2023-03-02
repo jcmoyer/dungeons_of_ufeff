@@ -1,27 +1,32 @@
 #pragma once
 
-#include <string_view>
 #include <GL/gl3w.h>
 #include <SDL.h>
+#include <string_view>
+
 #include "rectangle.hpp"
 
 class spritebatch;
 struct texture;
 
-struct bmfont_measurement {
+struct bmfont_measurement
+{
     int width, height;
 };
 
-class bmfont_glyph_map {
+class bmfont_glyph_map
+{
 public:
-  virtual rectangle map(char ch) const = 0;
-  virtual rectangle space() const = 0;
-  virtual int line_spacing() const = 0;
+    virtual rectangle map(char ch) const = 0;
+    virtual rectangle space() const = 0;
+    virtual int line_spacing() const = 0;
 };
 
-class bmfont {
+class bmfont
+{
 public:
-    void set_texture(const texture* tex_) {
+    void set_texture(const texture* tex_)
+    {
         tex = tex_;
     }
 
@@ -39,27 +44,40 @@ private:
     spritebatch* renderer = nullptr;
 };
 
+void draw_string_centered(bmfont& f, const bmfont_glyph_map& map, std::string_view text, const rectangle& rect, float r, float g, float b, float a = 1.0f);
 
-class glyph_map_font_blue_large : public bmfont_glyph_map {
+class glyph_map_font_blue_large : public bmfont_glyph_map
+{
 public:
     static const glyph_map_font_blue_large& instance();
     rectangle map(char ch) const override;
     rectangle space() const override;
-    int line_spacing() const override { return 2; }
+    int line_spacing() const override
+    {
+        return 2;
+    }
 };
 
-class glyph_map_font_yellow_large : public bmfont_glyph_map {
+class glyph_map_font_yellow_large : public bmfont_glyph_map
+{
 public:
     static const glyph_map_font_yellow_large& instance();
     rectangle map(char ch) const override;
     rectangle space() const override;
-    int line_spacing() const override { return 2; }
+    int line_spacing() const override
+    {
+        return 2;
+    }
 };
 
-class glyph_map_font_white_small : public bmfont_glyph_map {
+class glyph_map_font_white_small : public bmfont_glyph_map
+{
 public:
     static const glyph_map_font_white_small& instance();
     rectangle map(char ch) const override;
     rectangle space() const override;
-    int line_spacing() const override { return 2; }
+    int line_spacing() const override
+    {
+        return 2;
+    }
 };

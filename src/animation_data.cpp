@@ -1,6 +1,6 @@
-// clang-format off
-
 #include "animation_data.hpp"
+
+// clang-format off
 
 #define STANDARD_ANIM(name, x, y)        \
         {                                \

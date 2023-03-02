@@ -2,7 +2,8 @@
 
 #include "rectangle.hpp"
 
-class camera {
+class camera
+{
 public:
     camera() {}
 
@@ -29,21 +30,27 @@ public:
     void align_top(int to) { view.align_top(to); }
     void align_bottom(int to) { view.align_bottom(to); }
 
-    void center_on(int on_x, int on_y) {
+    void center_on(int on_x, int on_y)
+    {
         view.center_on(on_x, on_y);
     }
 
-    void clamp_to_bounds() {
-        if (left() < b_left) {
+    void clamp_to_bounds()
+    {
+        if (left() < b_left)
+        {
             align_left(b_left);
         }
-        if (top() < b_top) {
+        if (top() < b_top)
+        {
             align_top(b_top);
         }
-        if (right() > b_right) {
+        if (right() > b_right)
+        {
             align_right(b_right);
         }
-        if (bottom() > b_bottom) {
+        if (bottom() > b_bottom)
+        {
             align_bottom(b_bottom);
         }
     }
@@ -54,7 +61,7 @@ public:
     int bound_bottom() { return b_bottom; }
 
     const rectangle& get_view() const { return view; }
-    rectangle get_bounds() const { return { b_left, b_top, b_right - b_left, b_bottom - b_top }; }
+    rectangle get_bounds() const { return {b_left, b_top, b_right - b_left, b_bottom - b_top}; }
 
 private:
     rectangle view;

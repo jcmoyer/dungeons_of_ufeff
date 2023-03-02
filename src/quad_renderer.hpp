@@ -1,22 +1,25 @@
 #pragma once
 
-#include "shader.hpp"
-#include <glm/mat4x4.hpp>
-#include "rectangle.hpp"
 #include <cstdint>
+#include <glm/mat4x4.hpp>
 #include <vector>
+
+#include "rectangle.hpp"
+#include "shader.hpp"
 
 struct texture;
 
-struct quad_vertex {
-  float x, y;
-  float r, g, b, a;
+struct quad_vertex
+{
+    float x, y;
+    float r, g, b, a;
 };
 
 // why yes this is also a copy of spritebatch, how did you guess?
-class quad_renderer {
+class quad_renderer
+{
 public:
-  quad_renderer();
+    quad_renderer();
 
     void set_output_dimensions(int w, int h);
 
@@ -28,13 +31,13 @@ public:
     void draw_quad(const rectangle& dest, uint32_t rgba);
 
 protected:
-  quad_renderer(std::string_view vssrc, std::string_view fssrc);
+    quad_renderer(std::string_view vssrc, std::string_view fssrc);
 
     shader_program prog;
 
 private:
     std::vector<quad_vertex> batch;
-    
+
     GLuint vao;
     GLuint buffer;
 

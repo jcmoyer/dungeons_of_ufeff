@@ -1,18 +1,22 @@
 #pragma once
 
-#include "battle_character_info.hpp"
-#include <vector>
 #include <algorithm>
+#include <vector>
 
-struct encounter {
+#include "battle_character_info.hpp"
+
+struct encounter
+{
     battle_character_info_id enemies[8];
 
-    bool operator==(const encounter& rhs) const {
+    bool operator==(const encounter& rhs) const
+    {
         return std::equal(std::cbegin(enemies), std::cend(enemies), std::cbegin(rhs.enemies), std::cend(rhs.enemies));
     }
 };
 
-struct encounter_set {
+struct encounter_set
+{
     std::vector<encounter> encounters;
 
     const encounter& random_encounter() const;

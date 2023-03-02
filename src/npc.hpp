@@ -1,12 +1,13 @@
 #pragma once
 
-#include <string>
 #include <cstdint>
+#include <string>
 
 struct session_state;
 struct entity;
 
-struct npc_context {
+struct npc_context
+{
     // engine interaction
     virtual void say(const std::string& message) = 0;
     virtual void play_sound(const char* name) = 0;
@@ -25,6 +26,6 @@ struct npc_context {
     virtual session_state* session() = 0;
 };
 
-using npc_interact_script = void(*)(npc_context& context);
+using npc_interact_script = void (*)(npc_context& context);
 
 npc_interact_script get_npc_interact_script(uint32_t id);

@@ -1,6 +1,8 @@
 #include "quad_renderer.hpp"
+
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
 #include "texture_manager.hpp"
 
 constexpr auto default_vssrc = R"(#version 330 core
@@ -28,72 +30,86 @@ void main() {
 }
 )";
 
-quad_renderer::quad_renderer() : quad_renderer(default_vssrc, default_fssrc) {
+quad_renderer::quad_renderer()
+    : quad_renderer(default_vssrc, default_fssrc)
+{
 }
 
-quad_renderer::quad_renderer(std::string_view vssrc, std::string_view fssrc) {
-  prog = create_program_from_source(vssrc, fssrc);
+quad_renderer::quad_renderer(std::string_view vssrc, std::string_view fssrc)
+{
+    prog = create_program_from_source(vssrc, fssrc);
 
-  glGenVertexArrays(1, &vao);
-  glGenBuffers(1, &buffer);
+    glGenVertexArrays(1, &vao);
+    glGenBuffers(1, &buffer);
 
-  glBindVertexArray(vao);
+    glBindVertexArray(vao);
 
-  glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
 
-  glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(quad_vertex), (void*)0);
-  glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(quad_vertex), (void*)8);
-  glEnableVertexAttribArray(0);
-  glEnableVertexAttribArray(1);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(quad_vertex), (void*)0);
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(quad_vertex), (void*)8);
+    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
 }
 
-void quad_renderer::draw_quad(const rectangle& dest) {
-  float r = 1, g = 1, b = 1, a = 1;
-  draw_quad(dest, r, g, b, a);
-}
-
-void quad_renderer::draw_quad(const rectangle& dest, float r, float g, float b, float a) {
-  quad_vertex vertices[] = {
-      {dest.x + dest.w, dest.y, r, g, b, a},
-      {dest.x + dest.w, dest.y + dest.h, r, g, b, a},
-      {dest.x,  dest.y, r, g, b, a},
-      {dest.x + dest.w, dest.y + dest.h, r, g, b, a},
-      {dest.x, dest.y + dest.h, r, g, b, a},
-      {dest.x, dest.y, r, g, b, a}
-  };
-
-  // TODO: index this
-  batch.push_back(vertices[0]);
-  batch.push_back(vertices[1]);
-  batch.push_back(vertices[2]);
-  batch.push_back(vertices[3]);
-  batch.push_back(vertices[4]);
-  batch.push_back(vertices[5]);
-}
-
-void quad_renderer::draw_quad(const rectangle& dest, uint32_t rgba) {
-    float r = ((rgba & 0xff000000) >> 24) / 255.f;
-    float g = ((rgba & 0x00ff0000) >> 16) / 255.f;
-    float b = ((rgba & 0x0000ff00) >>  8) / 255.f;
-    float a = ((rgba & 0x000000ff) >>  0) / 255.f;
+void quad_renderer::draw_quad(const rectangle& dest)
+{
+    float r = 1, g = 1, b = 1, a = 1;
     draw_quad(dest, r, g, b, a);
 }
 
-void quad_renderer::begin() {
-  glUseProgram(prog.get_handle());
-  glBindVertexArray(vao);
-  glBindBuffer(GL_ARRAY_BUFFER, buffer);
+void quad_renderer::draw_quad(const rectangle& dest, float r, float g, float b, float a)
+{
+    float left = static_cast<float>(dest.x);
+    float right = static_cast<float>(dest.x + dest.w);
+    float top = static_cast<float>(dest.y);
+    float bottom = static_cast<float>(dest.y + dest.h);
 
-  auto uTransform = glGetUniformLocation(prog.get_handle(), "uTransform");
-  glUniformMatrix4fv(uTransform, 1, GL_FALSE, glm::value_ptr(transform));
+    quad_vertex vertices[] = {
+        {right, top, r, g, b, a},
+        {left, top, r, g, b, a},
+        {left, bottom, r, g, b, a},
+
+        {left, bottom, r, g, b, a},
+        {right, bottom, r, g, b, a},
+        {right, top, r, g, b, a}};
+
+    // TODO: index this
+    batch.push_back(vertices[0]);
+    batch.push_back(vertices[1]);
+    batch.push_back(vertices[2]);
+    batch.push_back(vertices[3]);
+    batch.push_back(vertices[4]);
+    batch.push_back(vertices[5]);
 }
 
-void quad_renderer::end() {
-  glBufferData(GL_ARRAY_BUFFER, batch.size() * sizeof(quad_vertex), batch.data(), GL_STREAM_DRAW);
-  glDrawArrays(GL_TRIANGLES, 0, batch.size());
-  batch.clear();
+void quad_renderer::draw_quad(const rectangle& dest, uint32_t rgba)
+{
+    float r = ((rgba & 0xff000000) >> 24) / 255.f;
+    float g = ((rgba & 0x00ff0000) >> 16) / 255.f;
+    float b = ((rgba & 0x0000ff00) >> 8) / 255.f;
+    float a = ((rgba & 0x000000ff) >> 0) / 255.f;
+    draw_quad(dest, r, g, b, a);
 }
 
-void quad_renderer::set_output_dimensions(int w, int h) {
-  transform = glm::ortho<float>(0, w, h, 0);
+void quad_renderer::begin()
+{
+    glUseProgram(prog.get_handle());
+    glBindVertexArray(vao);
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+
+    auto uTransform = glGetUniformLocation(prog.get_handle(), "uTransform");
+    glUniformMatrix4fv(uTransform, 1, GL_FALSE, glm::value_ptr(transform));
+}
+
+void quad_renderer::end()
+{
+    glBufferData(GL_ARRAY_BUFFER, batch.size() * sizeof(quad_vertex), batch.data(), GL_STREAM_DRAW);
+    glDrawArrays(GL_TRIANGLES, 0, batch.size());
+    batch.clear();
+}
+
+void quad_renderer::set_output_dimensions(int w, int h)
+{
+    transform = glm::ortho<float>(0, w, h, 0);
 }

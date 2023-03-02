@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="29">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="29">
  <editorsettings>
   <export target="hub.json" format="json"/>
  </editorsettings>
@@ -30,78 +30,78 @@
   </data>
  </layer>
  <objectgroup id="4" name="objects">
-  <object id="6" name="playerspawn_door" type="door" x="960" y="1008" width="16" height="16">
+  <object id="6" name="playerspawn_door" class="door" x="960" y="1008" width="16" height="16">
    <properties>
     <property name="interact_id" type="int" value="1"/>
     <property name="sprite_id" type="int" value="8"/>
    </properties>
   </object>
-  <object id="7" name="guide" type="npc" x="1072" y="960" width="16" height="16">
+  <object id="7" name="guide" class="npc" x="1072" y="960" width="16" height="16">
    <properties>
     <property name="interact_id" type="int" value="0"/>
     <property name="sprite_id" type="int" value="1"/>
    </properties>
   </object>
-  <object id="14" name="east_tower_basement_door" type="door" x="1344" y="752" width="16" height="16">
+  <object id="14" name="east_tower_basement_door" class="door" x="1344" y="752" width="16" height="16">
    <properties>
     <property name="interact_id" type="int" value="2"/>
     <property name="sprite_id" type="int" value="9"/>
    </properties>
   </object>
-  <object id="15" type="npc" x="1168" y="976" width="16" height="16">
+  <object id="15" class="npc" x="1168" y="976" width="16" height="16">
    <properties>
     <property name="interact_id" type="int" value="3"/>
     <property name="sprite_id" type="int" value="2"/>
    </properties>
   </object>
-  <object id="17" name="east_tower_basement_portal" type="portal" x="1344" y="720" width="16" height="16">
+  <object id="17" name="east_tower_basement_portal" class="portal" x="1344" y="720" width="16" height="16">
    <properties>
     <property name="exit_map" value="east_tower_basement"/>
     <property name="exit_name" value="hub_entrance"/>
    </properties>
   </object>
   <object id="18" name="east_tower_basement_entrance" x="1344" y="736" width="16" height="16"/>
-  <object id="20" name="sanctum entrance" type="door" x="960" y="608" width="16" height="16">
+  <object id="20" name="sanctum entrance" class="door" x="960" y="608" width="16" height="16">
    <properties>
     <property name="interact_id" type="int" value="18"/>
     <property name="sprite_id" type="int" value="9"/>
    </properties>
   </object>
-  <object id="22" name="generic_wood_door" type="door" x="1088" y="992" width="16" height="16">
+  <object id="22" name="generic_wood_door" class="door" x="1088" y="992" width="16" height="16">
    <properties>
     <property name="interact_id" type="int" value="1"/>
     <property name="sprite_id" type="int" value="8"/>
    </properties>
   </object>
-  <object id="23" type="npc" x="912" y="1136" width="16" height="16">
+  <object id="23" class="npc" x="912" y="1136" width="16" height="16">
    <properties>
     <property name="interact_id" type="int" value="17"/>
    </properties>
   </object>
-  <object id="24" name="sanctum entrance" type="door" x="960" y="560" width="16" height="16">
+  <object id="24" name="sanctum entrance" class="door" x="960" y="560" width="16" height="16">
    <properties>
     <property name="interact_id" type="int" value="18"/>
     <property name="sprite_id" type="int" value="9"/>
    </properties>
   </object>
-  <object id="25" name="sanctum entrance" type="door" x="960" y="512" width="16" height="16">
+  <object id="25" name="sanctum entrance" class="door" x="960" y="512" width="16" height="16">
    <properties>
     <property name="interact_id" type="int" value="18"/>
     <property name="sprite_id" type="int" value="9"/>
    </properties>
   </object>
-  <object id="26" name="sanctum entrance" type="door" x="960" y="464" width="16" height="16">
+  <object id="26" name="sanctum entrance" class="door" x="960" y="464" width="16" height="16">
    <properties>
     <property name="interact_id" type="int" value="18"/>
     <property name="sprite_id" type="int" value="9"/>
    </properties>
   </object>
-  <object id="27" name="east_tower_basement_portal" type="portal" x="960" y="256" width="16" height="16">
+  <object id="27" name="east_tower_basement_portal" class="portal" x="960" y="256" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="hub_entrance"/>
    </properties>
   </object>
-  <object id="28" name="playerspawn" type="playerspawn" x="960" y="1056" width="16" height="16"/>
+  <object id="28" name="playerspawn" class="playerspawn" x="960" y="1056" width="16" height="16"/>
  </objectgroup>
 </map>

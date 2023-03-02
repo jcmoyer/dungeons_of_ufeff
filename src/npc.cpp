@@ -1,84 +1,110 @@
 #include "npc.hpp"
+
 #include <cassert>
-#include "world.hpp"
-#include "gamestate.hpp"
 #include <fmt/format.h>
 
-void hub_spawnroom_npc(npc_context& context) {
+#include "gamestate.hpp"
+#include "world.hpp"
+
+void hub_spawnroom_npc(npc_context& context)
+{
     context.say("Something isn't right...");
     context.say("The elder went into the East Tower\na while ago, but he hasn't come back yet.");
     context.say("I think someone should check on him.");
-    context.say("By the way, did you know that you can\nattack by pressing X and jump by pressing ALT?");
-    context.say("At least, I read that somewhere, but I\nhaven't figured out what it means yet.");
+    //context.say("By the way, did you know that you can\nattack by pressing X and jump by pressing ALT?");
+    //context.say("At least, I read that somewhere, but I\nhaven't figured out what it means yet.");
 }
 
-void generic_door(npc_context& context) {
-    if (!context.self()->open) {
+void generic_door(npc_context& context)
+{
+    if (!context.self()->open)
+    {
         context.play_sound("door");
     }
     context.self()->set_doorstate(true);
 }
 
-void generic_metal_door(npc_context& context) {
-    if (!context.self()->open) {
+void generic_metal_door(npc_context& context)
+{
+    if (!context.self()->open)
+    {
         context.play_sound("metal_door");
     }
     context.self()->set_doorstate(true);
 }
 
-void east_tower_basement_door(npc_context& context) {
-    if (context.get_flag("east_tower_basement_door") == 1) {
-        if (!context.self()->open) {
+void east_tower_basement_door(npc_context& context)
+{
+    if (context.get_flag("east_tower_basement_door") == 1)
+    {
+        if (!context.self()->open)
+        {
             context.play_sound("metal_door");
         }
         context.self()->set_doorstate(true);
-    } else {
+    }
+    else
+    {
         context.say("This door won't open without a key.");
     }
 }
 
-void east_tower_key_npc(npc_context& context) {
-    if (context.get_flag("east_tower_basement_door")) {
+void east_tower_key_npc(npc_context& context)
+{
+    if (context.get_flag("east_tower_basement_door"))
+    {
         context.say("I already gave you the key. Did you hit your head?");
-    } else {
+    }
+    else
+    {
         context.say("You're trying to get into the East Tower?\nI have the key here. You may use it.");
         context.set_flag("east_tower_basement_door", 1);
     }
 }
 
-void change_to_light(npc_context& context) {
-    if (context.self()->type != et_light) {
+void change_to_light(npc_context& context)
+{
+    if (context.self()->type != et_light)
+    {
         context.self()->type = et_light;
         context.self()->set_sprite_id(10);
         context.play_sound("torch");
     }
 }
 
-void dead_body(npc_context& context) {
+void dead_body(npc_context& context)
+{
     context.say("The corpse is still warm.\nThis person was killed recently.");
 }
 
-void placeholder(npc_context& context) {
+void placeholder(npc_context& context)
+{
     context.say("You found a corndog.");
 }
 
-void switch_test(npc_context& context) {
+void switch_test(npc_context& context)
+{
     context.play_sound("switch");
     context.self()->set_switchstate(!context.self()->get_switchstate());
 }
 
-void puzzle_door(npc_context& context) {
-    if (!context.self()->open) {
+void puzzle_door(npc_context& context)
+{
+    if (!context.self()->open)
+    {
         context.say("This door is firmly shut. There's no way to open it manually.");
     }
 }
 
-bool is_puzzle_door_solved(npc_context& context) {
+bool is_puzzle_door_solved(npc_context& context)
+{
     return context.get_flag("puzzle_door_switch1") == 1 && context.get_flag("puzzle_door_switch2") == 0 && context.get_flag("puzzle_door_switch3") == 1;
 }
 
-void check_puzzle_door_solution(npc_context& context) {
-    if (is_puzzle_door_solved(context)) {
+void check_puzzle_door_solution(npc_context& context)
+{
+    if (is_puzzle_door_solved(context))
+    {
         entity* door = context.get_entity("puzzle_door");
         assert(door);
         door->set_doorstate(true);
@@ -86,8 +112,10 @@ void check_puzzle_door_solution(npc_context& context) {
     }
 }
 
-void puzzle_door_switch(npc_context& context, const char* name) {
-    if (!is_puzzle_door_solved(context)) {
+void puzzle_door_switch(npc_context& context, const char* name)
+{
+    if (!is_puzzle_door_solved(context))
+    {
         context.self()->toggle_switchstate();
         context.set_flag(name, context.self()->get_switchstate());
         check_puzzle_door_solution(context);
@@ -95,25 +123,31 @@ void puzzle_door_switch(npc_context& context, const char* name) {
     }
 }
 
-void puzzle_door_switch1(npc_context& context) {
+void puzzle_door_switch1(npc_context& context)
+{
     puzzle_door_switch(context, "puzzle_door_switch1");
 }
 
-void puzzle_door_switch2(npc_context& context) {
+void puzzle_door_switch2(npc_context& context)
+{
     puzzle_door_switch(context, "puzzle_door_switch2");
 }
 
-void puzzle_door_switch3(npc_context& context) {
+void puzzle_door_switch3(npc_context& context)
+{
     puzzle_door_switch(context, "puzzle_door_switch3");
 }
 
-void fj_room_torch(npc_context& context) {
-    if (context.self()->type != et_light) {
+void fj_room_torch(npc_context& context)
+{
+    if (context.self()->type != et_light)
+    {
         context.self()->type = et_light;
         context.self()->set_sprite_id(10);
         context.play_sound("torch");
         context.set_flag("fj_room_torch", context.get_flag("fj_room_torch") + 1);
-        if (context.get_flag("fj_room_torch") == 6) {
+        if (context.get_flag("fj_room_torch") == 6)
+        {
             entity* chest = context.get_entity("fj_chest");
             assert(chest);
             chest->set_active(true);
@@ -121,9 +155,11 @@ void fj_room_torch(npc_context& context) {
     }
 }
 
-void fj_chest(npc_context& context) {
+void fj_chest(npc_context& context)
+{
     // chests are actually one-time switches lol
-    if (!context.self()->get_switchstate()) {
+    if (!context.self()->get_switchstate())
+    {
         context.session()->has_flashjump = true;
         context.say("Learned Flash Jump!");
         context.say("Press JUMP again when you're near the\napex of your jump to propel yourself forward.");
@@ -134,11 +170,13 @@ void fj_chest(npc_context& context) {
     }
 }
 
-void light_path(npc_context& context) {
+void light_path(npc_context& context)
+{
     uint32_t current_torch = context.get_flag("light_path");
     context.set_flag("light_path", current_torch + 1);
 
-    if (current_torch == 6) {
+    if (current_torch == 6)
+    {
         context.set_encounter_state(true);
         return;
     }
@@ -152,49 +190,68 @@ void light_path(npc_context& context) {
     context.schedule(13, 3);
 }
 
-void dungeon_elder(npc_context& context) {
-    if (context.get_flag("elder_pendant") == 0) {
+void dungeon_elder(npc_context& context)
+{
+    if (context.get_flag("elder_pendant") == 0)
+    {
         context.say("You must stop Ragworm...");
         context.say("He broke out of the tower and went north to the Sanctum of Thought.");
         context.say("Take this pendant, it will allow passage to the temple...");
         context.set_flag("elder_pendant", 1);
-    } else {
+    }
+    else
+    {
         context.say("The elder has passed on.");
     }
 }
 
-void barely_breathing(npc_context& context) {
+void barely_breathing(npc_context& context)
+{
     context.say("She's barely breathing.");
 }
 
-void elder_door(npc_context& context) {
-    if (context.get_flag("elder_pendant") == 0) {
+void elder_door(npc_context& context)
+{
+    if (context.get_flag("elder_pendant") == 0)
+    {
         context.say("I should speak to the elder first.");
-    } else if (!context.self()->open) {
+    }
+    else if (!context.self()->open)
+    {
         context.self()->set_doorstate(true);
         context.play_sound("metal_door");
     }
 }
 
-void coffee_man(npc_context& context) {
-    if (context.get_flag("elder_pendant") == 0) {
+void coffee_man(npc_context& context)
+{
+    if (context.get_flag("elder_pendant") == 0)
+    {
         context.say("I wish I had some coffee, man.");
-    } else {
+    }
+    else
+    {
         context.say("Coffee...");
     }
 }
 
-void sanctum_hub_door(npc_context& context) {
-    if (context.get_flag("elder_pendant") == 0) {
+void sanctum_hub_door(npc_context& context)
+{
+    if (context.get_flag("elder_pendant") == 0)
+    {
         context.say("This door is protected by an ancient power.");
-    } else if (!context.self()->open) {
+    }
+    else if (!context.self()->open)
+    {
         context.self()->set_doorstate(true);
         context.play_sound("metal_door");
     }
 }
 
-void avenger_chest(npc_context& context) {
-    if (!context.self()->get_switchstate()) {
+void avenger_chest(npc_context& context)
+{
+    if (!context.self()->get_switchstate())
+    {
         context.session()->has_avenger = true;
         context.say("Learned Avenger!");
         context.say("Press C to throw a giant fiery star.");
@@ -203,22 +260,28 @@ void avenger_chest(npc_context& context) {
     }
 }
 
-void oracle_1(npc_context& context) {
+void oracle_1(npc_context& context)
+{
     context.say("Welcome to the Sanctum of Thought, where memories\nof all origins converge.");
     context.say("I am aware that you've come here following a monster\ncalled Ragworm. You must navigate the amalgamation\nof thought to find what you seek.");
 }
 
-void oracle_2(npc_context& context) {
-    if (context.get_flag("oracle_2") == 0) {
+void oracle_2(npc_context& context)
+{
+    if (context.get_flag("oracle_2") == 0)
+    {
         context.say("It seems you are a very capable fighter to make it this far.\nI shall grant you my power for the coming fight.");
         context.session()->has_shadowpartner = true;
         context.set_flag("oracle_2", 1);
-    } else {
+    }
+    else
+    {
         context.say("I have nothing more to give you.");
     }
 }
 
-void ragworm(npc_context& context) {
+void ragworm(npc_context& context)
+{
     context.say("AM I YOU? ARE YOU ME?");
     context.say("ARE WE ALL RAGWORM?");
     context.say("HAHAHAHAHAHAHAHA!!");
@@ -227,13 +290,16 @@ void ragworm(npc_context& context) {
     context.say("#ragworm");
 }
 
-void devs_reference(npc_context& context) {
+void devs_reference(npc_context& context)
+{
     context.say("-points-");
     context.say("Ture che qutatu.");
 }
 
-npc_interact_script get_npc_interact_script(uint32_t id) {
-    switch (id) {
+npc_interact_script get_npc_interact_script(uint32_t id)
+{
+    switch (id)
+    {
     case 0:
         return hub_spawnroom_npc;
     case 1:
@@ -290,4 +356,3 @@ npc_interact_script get_npc_interact_script(uint32_t id) {
         return placeholder;
     }
 }
-

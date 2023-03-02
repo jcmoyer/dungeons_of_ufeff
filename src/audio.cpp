@@ -1,20 +1,25 @@
 #include "audio.hpp"
+
+#include <cassert>
+#include <filesystem>
+
 #include "mathutil.hpp"
 #include "stb_vorbis.h"
-#include <filesystem>
-#include <cassert>
 
-static audio_buffer load_audio(const char* filename) {
+static audio_buffer load_audio(const char* filename)
+{
     audio_buffer buffer;
     buffer.sample_count = stb_vorbis_decode_filename(filename, &buffer.channels, &buffer.sample_rate, &buffer.samples);
     return std::move(buffer);
 }
 
-static void load_audio(const char* filename, audio_buffer& buffer) {
+static void load_audio(const char* filename, audio_buffer& buffer)
+{
     buffer.sample_count = stb_vorbis_decode_filename(filename, &buffer.channels, &buffer.sample_rate, &buffer.samples);
 }
 
-void audio_system::init() {
+void audio_system::init()
+{
     // probably will never need this many but this is not something that we want to keep reallocating
     // also !!!!!IMPORTANT!!!!! this modifies tracks without a mutex so it MUST be done before starting
     // the audio callback or decode thread
@@ -34,7 +39,8 @@ void audio_system::init() {
     decode_thread = std::thread([&]() {
         std::vector<decode_request> local_queue;
 
-        while (true) {
+        while (true)
+        {
             // wait for queue to fill up
             std::unique_lock<std::mutex> lk(decode_queue_m);
             decode_cv.wait(lk, [&]() { return decode_queue.size(); });
@@ -46,7 +52,8 @@ void audio_system::init() {
             lk.unlock();
 
             // load requests sequentially and put them into the tracklist
-            for (const decode_request& req : local_queue) {
+            for (const decode_request& req : local_queue)
+            {
                 // empty filename kills the thread
                 if (req.filename.size() == 0)
                     return;
@@ -64,15 +71,19 @@ void audio_system::init() {
     });
 }
 
-audio_buffer* audio_system::get_or_load(const char* filename) {
+audio_buffer* audio_system::get_or_load(const char* filename)
+{
     assert(std::filesystem::exists(filename));
 
     std::string filename_str{filename};
     cache_m.lock();
-    if (auto it = cache.find(filename_str); it != cache.end()) {
+    if (auto it = cache.find(filename_str); it != cache.end())
+    {
         cache_m.unlock();
         return &it->second;
-    } else {
+    }
+    else
+    {
         // Atomic insert so we can observe that a load for this filename
         // already exists if this function is called again, but before the
         // load has completed. This prevents the same resource from being
@@ -88,34 +99,38 @@ audio_buffer* audio_system::get_or_load(const char* filename) {
     }
 }
 
-std::shared_ptr<audio_parameters> audio_system::play_sound(const char* filename) {
+std::shared_ptr<audio_parameters> audio_system::play_sound(const char* filename)
+{
     auto parameters = std::make_shared<audio_parameters>();
     {
         std::scoped_lock lk(decode_queue_m);
-        decode_queue.push_back({ filename, false, parameters });
+        decode_queue.push_back({filename, false, parameters});
     }
     decode_cv.notify_one();
     return parameters;
 }
 
-std::shared_ptr<audio_parameters> audio_system::play_music(const char* filename) {
+std::shared_ptr<audio_parameters> audio_system::play_music(const char* filename)
+{
     auto parameters = std::make_shared<audio_parameters>();
     {
         std::scoped_lock lk(decode_queue_m);
-        decode_queue.push_back({ filename, true, parameters });
+        decode_queue.push_back({filename, true, parameters});
     }
     decode_cv.notify_one();
     return parameters;
 }
 
-void audio_system::audio_callback(void* userdata, Uint8* stream, int len) {
+void audio_system::audio_callback(void* userdata, Uint8* stream, int len)
+{
     audio_system* self = (audio_system*)userdata;
     SDL_memset(stream, 0, len);
     short* data_base = (short*)stream;
 
     std::scoped_lock lk(self->tracks_m);
 
-    for (audio_track& track : self->tracks) {
+    for (audio_track& track : self->tracks)
+    {
         audio_buffer* buffer = track.buffer;
         float volume = track.parameters->volume;
 
@@ -128,7 +143,8 @@ void audio_system::audio_callback(void* userdata, Uint8* stream, int len) {
         short* data = data_base;
 
         int written = 0;
-        for (int samp = 0; samp < len / sizeof(short); ++samp) {
+        for (int samp = 0; samp < len / sizeof(short); ++samp)
+        {
             if (track.done)
                 break;
 
@@ -136,10 +152,14 @@ void audio_system::audio_callback(void* userdata, Uint8* stream, int len) {
             ++data;
             ++track.cursor;
 
-            if (track.cursor == 2 * buffer->sample_count) {
-                if (track.loop) {
+            if (track.cursor == 2 * buffer->sample_count)
+            {
+                if (track.loop)
+                {
                     track.cursor = 0;
-                } else {
+                }
+                else
+                {
                     track.done = true;
                 }
             }
@@ -148,16 +168,18 @@ void audio_system::audio_callback(void* userdata, Uint8* stream, int len) {
 
     // TODO: this was raising an STL iterator-out-of-range error after reserving memory ahead of time
     // it seems like remove_if returns an invalid iterator if the collection is empty; need to investigate
-    if (self->tracks.size()) {
+    if (self->tracks.size())
+    {
         self->tracks.erase(
             std::remove_if(self->tracks.begin(), self->tracks.end(), [](const audio_track& t) {
                 return t.done || t.parameters->done;
-            }), self->tracks.end());
+            }),
+            self->tracks.end());
     }
-
 }
 
-audio_system::~audio_system() {
+audio_system::~audio_system()
+{
     // signal decode thread to exit
     play_sound("");
     decode_thread.join();

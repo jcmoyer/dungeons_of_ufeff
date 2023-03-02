@@ -1,6 +1,8 @@
 #include "imm_renderer.hpp"
+
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
 #include "texture_manager.hpp"
 
 constexpr auto vssrc = R"(#version 330 core
@@ -34,12 +36,14 @@ void main() {
 }
 )";
 
-struct imm_vertex {
+struct imm_vertex
+{
     float x, y, u, v;
     float r, g, b;
 };
 
-imm_renderer::imm_renderer() {
+imm_renderer::imm_renderer()
+{
     prog = create_program_from_source(vssrc, fssrc);
 
     glGenVertexArrays(1, &vao);
@@ -55,24 +59,31 @@ imm_renderer::imm_renderer() {
     glEnableVertexAttribArray(1);
 }
 
-void imm_renderer::draw_quad(int x, int y, int w, int h) {
+void imm_renderer::draw_quad(int x, int y, int w, int h)
+{
     draw_quad(x, y, w, h, 1, 1, 1);
 }
 
-void imm_renderer::draw_quad(int x, int y, int w, int h, float r, float g, float b) {
+void imm_renderer::draw_quad(int x, int y, int w, int h, float r, float g, float b)
+{
+    float left = static_cast<float>(x);
+    float right = static_cast<float>(x + w);
+    float top = static_cast<float>(y);
+    float bottom = static_cast<float>(y + h);
+
     imm_vertex vertices[] = {
-        {x,     y,     0, 0, r, g, b},
-        {x,     y + h, 0, 1, r, g, b},
-        {x + w, y + h, 1, 1, r, g, b},
-        {x + w, y,     1, 0, r, g, b}
-    };
+        {left, top, 0, 0, r, g, b},
+        {left, bottom, 0, 1, r, g, b},
+        {right, bottom, 1, 1, r, g, b},
+        {right, top, 1, 0, r, g, b}};
 
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STREAM_DRAW);
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 }
 
-void imm_renderer::draw_quad(const texture* tex, const rectangle& src, const rectangle& dest) {
+void imm_renderer::draw_quad(const texture* tex, const rectangle& src, const rectangle& dest)
+{
     float r = 1, g = 1, b = 1;
 
     int s_left = src.x;
@@ -85,21 +96,26 @@ void imm_renderer::draw_quad(const texture* tex, const rectangle& src, const rec
     float uv_top = s_top / (float)tex->height;
     float uv_bottom = s_bottom / (float)tex->height;
 
+    float left = static_cast<float>(dest.x);
+    float right = static_cast<float>(dest.x + dest.w);
+    float top = static_cast<float>(dest.y);
+    float bottom = static_cast<float>(dest.y + dest.h);
+
     imm_vertex vertices[] = {
-        {dest.x + dest.w, dest.y, uv_right, uv_top, r, g, b},
-        {dest.x + dest.w, dest.y + dest.h, uv_right, uv_bottom, r, g, b},
-        {dest.x,  dest.y, uv_left, uv_top, r, g, b},
-        {dest.x + dest.w, dest.y + dest.h, uv_right, uv_bottom, r, g, b},
-        {dest.x, dest.y + dest.h, uv_left, uv_bottom, r, g, b},
-        {dest.x, dest.y, uv_left, uv_top, r, g, b}
-    };
+        {right, top, uv_right, uv_top, r, g, b},
+        {right, bottom, uv_right, uv_bottom, r, g, b},
+        {left, top, uv_left, uv_top, r, g, b},
+        {right, bottom, uv_right, uv_bottom, r, g, b},
+        {left, bottom, uv_left, uv_bottom, r, g, b},
+        {left, top, uv_left, uv_top, r, g, b}};
 
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STREAM_DRAW);
     glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 
-void imm_renderer::begin() {
+void imm_renderer::begin()
+{
     glUseProgram(prog.get_handle());
     glBindVertexArray(vao);
 
@@ -107,6 +123,7 @@ void imm_renderer::begin() {
     glUniformMatrix4fv(uTransform, 1, GL_FALSE, glm::value_ptr(transform));
 }
 
-void imm_renderer::set_output_dimensions(int w, int h) {
+void imm_renderer::set_output_dimensions(int w, int h)
+{
     transform = glm::ortho<float>(0, w, h, 0);
 }

@@ -1,6 +1,5 @@
 == Universal controls =========================================================
 
-F10             change window size, locked to 2:1 aspect ratio upscaled
 Alt+Enter       toggle fullscreen
 
 
@@ -9,6 +8,7 @@ Alt+Enter       toggle fullscreen
 
 Arrows          move
 X               interact
+Escape          options
 
 
 
@@ -16,6 +16,6 @@ X               interact
 
 Arrows          move
 Alt             jump
-X               attack
-
-additional controls can be discovered in-game
+X               skill 1
+C               skill 2 (needs to be discovered)
+Escape          options

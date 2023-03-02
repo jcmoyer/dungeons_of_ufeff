@@ -1,43 +1,47 @@
 #pragma once
 
 #include <SDL.h>
-#include "camera.hpp"
-#include "texture_manager.hpp"
-#include "bmfont.hpp"
-#include "imm_renderer.hpp"
+#include <glm/vec2.hpp>
 #include <memory>
-#include "audio.hpp"
-#include "spritebatch.hpp"
-#include "quad_renderer.hpp"
-#include "water_renderer.hpp"
-#include "foam_emitter.hpp"
 
+#include "audio.hpp"
+#include "bmfont.hpp"
+#include "camera.hpp"
+#include "foam_emitter.hpp"
+#include "gamestate.hpp"
+#include "imm_renderer.hpp"
+#include "quad_renderer.hpp"
+#include "screen_renderer.hpp"
 #include "shader.hpp"
+#include "spritebatch.hpp"
+#include "st_battle.hpp"
+#include "st_battlestats.hpp"
+#include "st_gameover.hpp"
+#include "st_gamewin.hpp"
+#include "st_mainmenu.hpp"
+#include "st_options.hpp"
+#include "st_play.hpp"
+#include "texture_manager.hpp"
+#include "timer.hpp"
+#include "water_renderer.hpp"
 #include "world.hpp"
 
-#include "st_play.hpp"
-#include "st_mainmenu.hpp"
-#include "st_battle.hpp"
-#include "st_gameover.hpp"
-#include "st_battlestats.hpp"
-#include "st_gamewin.hpp"
-#include "gamestate.hpp"
-#include "timer.hpp"
-#include "screen_renderer.hpp"
-
-enum class transition_to {
+enum class transition_to
+{
     mainmenu,
     play,
     battle,
     gameover,
     battlestats,
     gamewin,
+    options,
 };
 
 const int INTERNAL_WIDTH = 512;
 const int INTERNAL_HEIGHT = 256;
 
-class game {
+class game
+{
 public:
     game();
     ~game();
@@ -45,6 +49,8 @@ public:
     void run();
 
     void transition(transition_to t);
+    void transition(gamestate* t);
+
     timer create_timer(double duration_sec);
 
     void render_to_scene();
@@ -55,6 +61,13 @@ public:
 
     st_battle& get_battle_state();
     st_battlestats& get_battlestats_state();
+    st_options& get_options_state();
+
+    int get_scale() const;
+    glm::ivec2 unproject(const glm::ivec2& vec);
+
+    void select_next_resolution();
+    void toggle_fullscreen();
 
 private:
     void handle_event(const SDL_Event& ev);
@@ -64,13 +77,11 @@ private:
     void render(double a);
 
     void perform_layout();
-    void select_next_resolution();
-    void toggle_fullscreen();
 
 private:
     SDL_Window* window = nullptr;
     SDL_GLContext context = nullptr;
-    
+
     bool running = false;
 
     camera prev_cam;
@@ -114,7 +125,10 @@ private:
     std::unique_ptr<st_gameover> gameover;
     std::unique_ptr<st_battlestats> battlestats;
     std::unique_ptr<st_gamewin> gamewin;
+    std::unique_ptr<st_options> options;
     gamestate* current_st = nullptr;
 
     shared_state sstate;
+
+    size_t scales_index = 1;
 };

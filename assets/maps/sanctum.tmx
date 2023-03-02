@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="44">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="45">
  <properties>
   <property name="battle_field_name" value="bf_sanctum"/>
   <property name="encounter_set_id" type="int" value="1"/>
@@ -30,14 +30,14 @@
  </layer>
  <objectgroup id="4" name="objects">
   <object id="1" name="hub_entrance" x="624" y="1104" width="16" height="16"/>
-  <object id="2" name="avenger_chest" type="switch" x="704" y="880" width="16" height="16">
+  <object id="2" name="avenger_chest" class="switch" x="704" y="880" width="16" height="16">
    <properties>
     <property name="interact_id" type="int" value="19"/>
     <property name="sprite_id" type="int" value="20"/>
    </properties>
   </object>
   <object id="3" name="avenger_room_in" x="736" y="912" width="16" height="16"/>
-  <object id="5" name="to_island" type="portal" x="816" y="960" width="16" height="16">
+  <object id="5" name="to_island" class="portal" x="816" y="960" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="island_right"/>
@@ -45,20 +45,20 @@
   </object>
   <object id="6" name="island_right" x="1328" y="192" width="16" height="16"/>
   <object id="7" name="sanctum_first_portal" x="816" y="976" width="16" height="16"/>
-  <object id="8" name="to_entrance" type="portal" x="1344" y="192" width="16" height="16">
+  <object id="8" name="to_entrance" class="portal" x="1344" y="192" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="sanctum_first_portal"/>
    </properties>
   </object>
-  <object id="9" name="to_city" type="portal" x="1200" y="240" width="16" height="16">
+  <object id="9" name="to_city" class="portal" x="1200" y="240" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="city_top_left"/>
    </properties>
   </object>
   <object id="10" name="city_top_left" x="1216" y="1280" width="16" height="16"/>
-  <object id="11" name="to_island_bottom" type="portal" x="1216" y="1264" width="16" height="16">
+  <object id="11" name="to_island_bottom" class="portal" x="1216" y="1264" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="island_bottom"/>
@@ -73,44 +73,44 @@
   <object id="18" name="void_top_right" x="640" y="176" width="16" height="16"/>
   <object id="19" name="city_top_right" x="1328" y="1280" width="16" height="16"/>
   <object id="20" name="city_bottom_right" x="1328" y="1392" width="16" height="16"/>
-  <object id="21" name="trick_portal" type="portal" x="1328" y="1376" width="16" height="16">
+  <object id="21" name="trick_portal" class="portal" x="1328" y="1376" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="sanctum_first_portal"/>
    </properties>
   </object>
-  <object id="22" name="portal_to_void" type="portal" x="1328" y="1264" width="16" height="16">
+  <object id="22" name="portal_to_void" class="portal" x="1328" y="1264" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="void_bottom_left"/>
    </properties>
   </object>
-  <object id="24" name="portal_to_city_void_bl" type="portal" x="592" y="240" width="16" height="16">
+  <object id="24" name="portal_to_city_void_bl" class="portal" x="592" y="240" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="city_top_right"/>
    </properties>
   </object>
-  <object id="25" name="portal_to_oasis_s" type="portal" x="672" y="224" width="16" height="16">
+  <object id="25" name="portal_to_oasis_s" class="portal" x="672" y="224" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="oasis_s"/>
    </properties>
   </object>
   <object id="26" name="oasis_s" x="256" y="1488" width="16" height="16"/>
-  <object id="27" name="to_void_br" type="portal" x="256" y="1504" width="16" height="16">
+  <object id="27" name="to_void_br" class="portal" x="256" y="1504" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="void_bottom_right"/>
    </properties>
   </object>
-  <object id="28" name="to_avenger_room" type="portal" x="144" y="1408" width="16" height="16">
+  <object id="28" name="to_avenger_room" class="portal" x="144" y="1408" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="avenger_room_in"/>
    </properties>
   </object>
-  <object id="29" name="avenger_room_out" type="portal" x="736" y="896" width="16" height="16">
+  <object id="29" name="avenger_room_out" class="portal" x="736" y="896" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="oasis_w"/>
@@ -119,65 +119,66 @@
   <object id="30" name="oasis_w" x="160" y="1408" width="16" height="16"/>
   <object id="31" name="oasis_n" x="256" y="1344" width="16" height="16"/>
   <object id="32" name="oasis_e" x="352" y="1408" width="16" height="16"/>
-  <object id="33" name="to_void_tl" type="portal" x="256" y="1328" width="16" height="16">
+  <object id="33" name="to_void_tl" class="portal" x="256" y="1328" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="void_top_left"/>
    </properties>
   </object>
-  <object id="34" name="trick_portal" type="portal" x="608" y="176" width="16" height="16">
+  <object id="34" name="trick_portal" class="portal" x="608" y="176" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="sanctum_first_portal"/>
    </properties>
   </object>
-  <object id="35" name="to_final" type="portal" x="656" y="176" width="16" height="16">
+  <object id="35" name="to_final" class="portal" x="656" y="176" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="final_entrance"/>
    </properties>
   </object>
-  <object id="36" name="to_island_top" type="portal" x="368" y="1408" width="16" height="16">
+  <object id="36" name="to_island_top" class="portal" x="368" y="1408" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="island_top"/>
    </properties>
   </object>
-  <object id="37" name="to_oasis_e" type="portal" x="1248" y="128" width="16" height="16">
+  <object id="37" name="to_oasis_e" class="portal" x="1248" y="128" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="oasis_e"/>
    </properties>
   </object>
-  <object id="38" name="oracle_1" type="npc" x="656" y="704" width="16" height="16">
+  <object id="38" name="oracle_1" class="npc" x="656" y="704" width="16" height="16">
    <properties>
     <property name="interact_id" type="int" value="20"/>
     <property name="sprite_id" type="int" value="2"/>
    </properties>
   </object>
-  <object id="39" name="oracle_2" type="npc" x="1264" y="576" width="16" height="16">
+  <object id="39" name="oracle_2" class="npc" x="1264" y="576" width="16" height="16">
    <properties>
     <property name="interact_id" type="int" value="21"/>
     <property name="sprite_id" type="int" value="2"/>
    </properties>
   </object>
-  <object id="40" name="out_of_final_room" type="portal" x="1312" y="496" width="16" height="16">
+  <object id="40" name="out_of_final_room" class="portal" x="1312" y="496" width="16" height="16">
    <properties>
     <property name="exit_map" value="sanctum"/>
     <property name="exit_name" value="void_top_right"/>
    </properties>
   </object>
-  <object id="41" name="oracle_1" type="npc" x="1344" y="1296" width="16" height="16">
+  <object id="41" name="oracle_1" class="npc" x="1344" y="1296" width="16" height="16">
    <properties>
     <property name="interact_id" type="int" value="23"/>
     <property name="sprite_id" type="int" value="2"/>
    </properties>
   </object>
-  <object id="43" name="to_lair" type="portal" x="1264" y="624" width="16" height="16">
+  <object id="43" name="to_lair" class="portal" x="1264" y="624" width="16" height="16">
    <properties>
     <property name="exit_map" value="lair"/>
     <property name="exit_name" value="lair_entrance"/>
    </properties>
   </object>
+  <object id="44" name="playerspawn" class="playerspawn" x="656" y="960" width="16" height="16"/>
  </objectgroup>
 </map>

@@ -1,12 +1,14 @@
 #pragma once
 
 #include <SDL.h>
+
 #include "gamestate.hpp"
 #include "timer.hpp"
 
 class game;
 
-class st_battlestats : public gamestate {
+class st_battlestats : public gamestate
+{
 public:
     st_battlestats(game* owner, shared_state* state);
 
@@ -14,7 +16,7 @@ public:
     void update() override;
     void render(double a) override;
     void handle_event(const SDL_Event& ev) override;
-    void enter() override;
+    void enter(gamestate* old) override;
     void leave() override;
 
     void set_exp_gained(int32_t amt);
@@ -23,7 +25,8 @@ private:
     void render_fade();
 
 private:
-    enum substate {
+    enum substate
+    {
         none,
         fade_in,
         tally,

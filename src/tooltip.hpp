@@ -5,7 +5,8 @@
 struct texture;
 class imm_renderer;
 
-class tooltip {
+class tooltip
+{
 public:
     void set_texture(const texture* tex_) { tex = tex_; }
 

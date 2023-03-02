@@ -1,18 +1,23 @@
 #include "st_gameover.hpp"
+
 #include "game.hpp"
 #include "mathutil.hpp"
 
-st_gameover::st_gameover(game* g, shared_state* s) : owner{ g }, state{ s } {
+st_gameover::st_gameover(game* g, shared_state* s)
+    : owner{g}, state{s}
+{
 }
 
-void st_gameover::init() {
-
+void st_gameover::init()
+{
 }
 
-void st_gameover::update() {
+void st_gameover::update()
+{
 }
 
-void st_gameover::render(double a) {
+void st_gameover::render(double a)
+{
     const auto* tex = state->texman->get("assets/amalgamation.png");
 
     glBindTexture(GL_TEXTURE_2D, tex->tex);
@@ -28,26 +33,31 @@ void st_gameover::render(double a) {
     render_fade();
 }
 
-void st_gameover::handle_event(const SDL_Event& ev) {
+void st_gameover::handle_event(const SDL_Event& ev)
+{
 }
 
-void st_gameover::render_fade() {
-    if (sub != fade_in) {
+void st_gameover::render_fade()
+{
+    if (sub != fade_in)
+    {
         return;
     }
 
     const double c = 1.0 - clamp(fade_timer.progress(state->frame_counter), 0.0, 1.0);
 
     state->quad_render->begin();
-    state->quad_render->draw_quad({ 0, 0, INTERNAL_WIDTH, INTERNAL_HEIGHT }, 0, 0, 0, c);
+    state->quad_render->draw_quad({0, 0, INTERNAL_WIDTH, INTERNAL_HEIGHT}, 0, 0, 0, c);
     state->quad_render->end();
 }
 
-void st_gameover::enter() {
+void st_gameover::enter(gamestate* old)
+{
     sub = fade_in;
     fade_timer = owner->create_timer(3);
     state->audio->play_sound("assets/sound/gameover.ogg");
 }
 
-void st_gameover::leave() {
+void st_gameover::leave()
+{
 }

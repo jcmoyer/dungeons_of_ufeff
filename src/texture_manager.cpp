@@ -1,14 +1,20 @@
 #include "texture_manager.hpp"
-#include "stb_image.h"
+
 #include <cassert>
 
-const texture* texture_manager::get(const std::string& filename) {
+#include "stb_image.h"
+
+const texture* texture_manager::get(const std::string& filename)
+{
     stbi_set_flip_vertically_on_load(true);
 
-    if (auto it = cache.find(filename); it != cache.end()) {
+    if (auto it = cache.find(filename); it != cache.end())
+    {
         // references to elements within a map are guaranteed to not be invalidated on insert/erase
         return &it->second;
-    } else {
+    }
+    else
+    {
         int x, y, n;
         unsigned char* data = stbi_load(filename.c_str(), &x, &y, &n, 4);
         assert(data != nullptr);
@@ -26,7 +32,6 @@ const texture* texture_manager::get(const std::string& filename) {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         //glGenerateMipmap(GL_TEXTURE_2D_ARRAY);
 
-
         stbi_image_free(data);
 
         auto [new_it, success] = cache.emplace(std::make_pair(filename, std::move(t)));
@@ -34,6 +39,7 @@ const texture* texture_manager::get(const std::string& filename) {
     }
 }
 
-void texture_manager::clear() {
+void texture_manager::clear()
+{
     return cache.clear();
 }

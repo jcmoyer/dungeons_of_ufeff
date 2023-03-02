@@ -1,6 +1,8 @@
 #include "spritebatch.hpp"
+
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
 #include "texture_manager.hpp"
 
 constexpr auto default_vssrc = R"(#version 330 core
@@ -34,101 +36,121 @@ void main() {
 }
 )";
 
-spritebatch::spritebatch() : spritebatch(default_vssrc, default_fssrc) {
+spritebatch::spritebatch()
+    : spritebatch(default_vssrc, default_fssrc)
+{
 }
 
-spritebatch::spritebatch(std::string_view vssrc, std::string_view fssrc) {
-  prog = create_program_from_source(vssrc, fssrc);
+spritebatch::spritebatch(std::string_view vssrc, std::string_view fssrc)
+{
+    prog = create_program_from_source(vssrc, fssrc);
 
-  uTransform = glGetUniformLocation(prog.get_handle(), "uTransform");
+    uTransform = glGetUniformLocation(prog.get_handle(), "uTransform");
 
-  glGenVertexArrays(1, &vao);
-  glGenBuffers(1, &buffer);
+    glGenVertexArrays(1, &vao);
+    glGenBuffers(1, &buffer);
 
-  glBindVertexArray(vao);
+    glBindVertexArray(vao);
 
-  glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
 
-  glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(spritebatch_vertex), (void*)0);
-  glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(spritebatch_vertex), (void*)16);
-  glEnableVertexAttribArray(0);
-  glEnableVertexAttribArray(1);
+    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(spritebatch_vertex), (void*)0);
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(spritebatch_vertex), (void*)16);
+    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
 }
 
-void spritebatch::draw_quad(const texture* tex, const rectangle& src, const rectangle& dest) {
-  float r = 1, g = 1, b = 1;
-  draw_quad(tex, src, dest, r, g, b);
+void spritebatch::draw_quad(const texture* tex, const rectangle& src, const rectangle& dest)
+{
+    float r = 1, g = 1, b = 1;
+    draw_quad(tex, src, dest, r, g, b);
 }
 
-void spritebatch::draw_quad(const texture* tex, const rectangle& src, const rectangle& dest, float r, float g, float b, float a) {
-  int s_left = src.x;
-  int s_right = src.x + src.w;
-  int s_top = src.y;
-  int s_bottom = src.y + src.h;
+void spritebatch::draw_quad(const texture* tex, const rectangle& src, const rectangle& dest, float r, float g, float b, float a)
+{
+    int s_left = src.x;
+    int s_right = src.x + src.w;
+    int s_top = src.y;
+    int s_bottom = src.y + src.h;
 
-  float uv_left = s_left / (float)tex->width;
-  float uv_right = s_right / (float)tex->width;
-  float uv_top = s_top / (float)tex->height;
-  float uv_bottom = s_bottom / (float)tex->height;
+    float uv_left = s_left / (float)tex->width;
+    float uv_right = s_right / (float)tex->width;
+    float uv_top = s_top / (float)tex->height;
+    float uv_bottom = s_bottom / (float)tex->height;
 
-  spritebatch_vertex vertices[] = {
-      {dest.x + dest.w, dest.y, uv_right, uv_top, r, g, b, a},
-      {dest.x + dest.w, dest.y + dest.h, uv_right, uv_bottom, r, g, b, a},
-      {dest.x,  dest.y, uv_left, uv_top, r, g, b, a},
-      {dest.x + dest.w, dest.y + dest.h, uv_right, uv_bottom, r, g, b, a},
-      {dest.x, dest.y + dest.h, uv_left, uv_bottom, r, g, b, a},
-      {dest.x, dest.y, uv_left, uv_top, r, g, b, a}
-  };
+    float left = static_cast<float>(dest.x);
+    float right = static_cast<float>(dest.x + dest.w);
+    float top = static_cast<float>(dest.y);
+    float bottom = static_cast<float>(dest.y + dest.h);
 
-  // TODO: index this
-  batch.push_back(vertices[0]);
-  batch.push_back(vertices[1]);
-  batch.push_back(vertices[2]);
-  batch.push_back(vertices[3]);
-  batch.push_back(vertices[4]);
-  batch.push_back(vertices[5]);
+    spritebatch_vertex vertices[] = {
+        {right, top, uv_right, uv_top, r, g, b, a},
+        {left, top, uv_left, uv_top, r, g, b, a},
+        {left, bottom, uv_left, uv_bottom, r, g, b, a},
+
+        {left, bottom, uv_left, uv_bottom, r, g, b, a},
+        {right, bottom, uv_right, uv_bottom, r, g, b, a},
+        {right, top, uv_right, uv_top, r, g, b, a}};
+
+    // TODO: index this
+    batch.push_back(vertices[0]);
+    batch.push_back(vertices[1]);
+    batch.push_back(vertices[2]);
+    batch.push_back(vertices[3]);
+    batch.push_back(vertices[4]);
+    batch.push_back(vertices[5]);
 }
 
-void spritebatch::draw_tiled_quad(const texture* tex, const rectangle& dest, float rx, float ry) {
-  float r = 1, g = 1, b = 1, a = 1;
+void spritebatch::draw_tiled_quad(const texture* tex, const rectangle& dest, float rx, float ry)
+{
+    float r = 1, g = 1, b = 1, a = 1;
 
-  float uv_left = 0;
-  float uv_right = rx;
-  float uv_top = 0;
-  float uv_bottom = ry;
+    float uv_left = 0;
+    float uv_right = rx;
+    float uv_top = 0;
+    float uv_bottom = ry;
 
-  spritebatch_vertex vertices[] = {
-      {dest.x + dest.w, dest.y, uv_right, uv_top, r, g, b, a},
-      {dest.x + dest.w, dest.y + dest.h, uv_right, uv_bottom, r, g, b, a},
-      {dest.x,  dest.y, uv_left, uv_top, r, g, b, a},
-      {dest.x + dest.w, dest.y + dest.h, uv_right, uv_bottom, r, g, b, a},
-      {dest.x, dest.y + dest.h, uv_left, uv_bottom, r, g, b, a},
-      {dest.x, dest.y, uv_left, uv_top, r, g, b, a}
-  };
+    float left = static_cast<float>(dest.x);
+    float right = static_cast<float>(dest.x + dest.w);
+    float top = static_cast<float>(dest.y);
+    float bottom = static_cast<float>(dest.y + dest.h);
 
-  // TODO: index this
-  batch.push_back(vertices[0]);
-  batch.push_back(vertices[1]);
-  batch.push_back(vertices[2]);
-  batch.push_back(vertices[3]);
-  batch.push_back(vertices[4]);
-  batch.push_back(vertices[5]);
+    spritebatch_vertex vertices[] = {
+        {right, top, uv_right, uv_top, r, g, b, a},
+        {left, top, uv_left, uv_top, r, g, b, a},
+        {left, bottom, uv_left, uv_bottom, r, g, b, a},
+
+        {left, bottom, uv_left, uv_bottom, r, g, b, a},
+        {right, bottom, uv_right, uv_bottom, r, g, b, a},
+        {right, top, uv_right, uv_top, r, g, b, a}};
+
+    // TODO: index this
+    batch.push_back(vertices[0]);
+    batch.push_back(vertices[1]);
+    batch.push_back(vertices[2]);
+    batch.push_back(vertices[3]);
+    batch.push_back(vertices[4]);
+    batch.push_back(vertices[5]);
 }
 
-void spritebatch::begin() {
-  glUseProgram(prog.get_handle());
-  glBindVertexArray(vao);
-  glBindBuffer(GL_ARRAY_BUFFER, buffer);
+void spritebatch::begin()
+{
+    glUseProgram(prog.get_handle());
+    glBindVertexArray(vao);
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
 
-  glUniformMatrix4fv(uTransform, 1, GL_FALSE, glm::value_ptr(transform));
+    glUniformMatrix4fv(uTransform, 1, GL_FALSE, glm::value_ptr(transform));
 }
 
-void spritebatch::end() {
+void spritebatch::end()
+{
     flush();
 }
 
-void spritebatch::flush() {
-    if (batch.size() == 0) {
+void spritebatch::flush()
+{
+    if (batch.size() == 0)
+    {
         return;
     }
 
@@ -137,6 +159,7 @@ void spritebatch::flush() {
     batch.clear();
 }
 
-void spritebatch::set_output_dimensions(int w, int h) {
-  transform = glm::ortho<float>(0, w, h, 0);
+void spritebatch::set_output_dimensions(int w, int h)
+{
+    transform = glm::ortho<float>(0, w, h, 0);
 }

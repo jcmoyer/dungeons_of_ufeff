@@ -1,23 +1,26 @@
 #pragma once
 
 #include <SDL.h>
-#include "gamestate.hpp"
-#include "battle_object_renderer.hpp"
-#include "battle_field_renderer.hpp"
-#include "timer.hpp"
-#include "battle/battle_field.hpp"
+
 #include "battle/battle_camera.hpp"
+#include "battle/battle_field.hpp"
 #include "battle/encounters.hpp"
+#include "battle_field_renderer.hpp"
+#include "battle_object_renderer.hpp"
+#include "gamestate.hpp"
+#include "timer.hpp"
 
 struct audio_parameters;
 class game;
 
-struct cached_mesh {
+struct cached_mesh
+{
     battle_field_mesh mesh;
     battle_field_bounds bounds;
 };
 
-class st_battle : public gamestate {
+class st_battle : public gamestate
+{
 public:
     st_battle(game* owner, shared_state* state);
 
@@ -26,12 +29,11 @@ public:
     void update() override;
     void render(double a) override;
     void handle_event(const SDL_Event& ev) override;
-    void enter() override;
+    void enter(gamestate* old) override;
     void leave() override;
 
     void set_battle_field_name(std::string bf_name);
     void set_encounter(encounter enc_);
-    
 
 private:
     void begin_transition();
@@ -49,13 +51,15 @@ private:
 
     std::shared_ptr<audio_parameters> current_music;
 
-    enum substate {
+    enum substate
+    {
         none,
         battle_fadein,
         battle_fadeout
     };
 
-    enum battle_result {
+    enum battle_result
+    {
         win,
         lose
     };

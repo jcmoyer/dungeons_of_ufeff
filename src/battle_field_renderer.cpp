@@ -1,8 +1,9 @@
 #include "battle_field_renderer.hpp"
 
+#include <GL/gl3w.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include <GL/gl3w.h>
+
 #include "texture_manager.hpp"
 
 constexpr auto default_vssrc = R"(#version 330 core
@@ -46,7 +47,8 @@ void main() {
 }
 )";
 
-battle_field_renderer::battle_field_renderer() {
+battle_field_renderer::battle_field_renderer()
+{
     prog = create_program_from_source(default_vssrc, default_fssrc);
 
     uView = glGetUniformLocation(prog.get_handle(), "uView");
@@ -68,17 +70,19 @@ battle_field_renderer::battle_field_renderer() {
     glEnableVertexAttribArray(2);
 }
 
-void battle_field_renderer::set_mesh(const battle_field_mesh& mesh) {
-    glBindVertexArray(vao);// don't think this is necessary?
+void battle_field_renderer::set_mesh(const battle_field_mesh& mesh)
+{
+    glBindVertexArray(vao); // don't think this is necessary?
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
     glBufferData(GL_ARRAY_BUFFER, mesh.vertices.size() * sizeof(battle_field_vertex), mesh.vertices.data(), GL_STATIC_DRAW);
     mesh_size = (GLsizei)mesh.vertices.size();
 }
 
-void battle_field_renderer::render(const glm::mat4& view, const glm::mat4& projection) {
+void battle_field_renderer::render(const glm::mat4& view, const glm::mat4& projection)
+{
     glUseProgram(prog.get_handle());
     glBindVertexArray(vao);
-    glBindBuffer(GL_ARRAY_BUFFER, buffer);//don't think this is necessary, should be part of vao state?
+    glBindBuffer(GL_ARRAY_BUFFER, buffer); //don't think this is necessary, should be part of vao state?
 
     glUniformMatrix4fv(uView, 1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(uProjection, 1, GL_FALSE, glm::value_ptr(projection));
@@ -87,6 +91,7 @@ void battle_field_renderer::render(const glm::mat4& view, const glm::mat4& proje
     glDrawArrays(GL_TRIANGLES, 0, mesh_size);
 }
 
-void battle_field_renderer::set_light_direction(const glm::vec3& dir) {
+void battle_field_renderer::set_light_direction(const glm::vec3& dir)
+{
     light_direction = dir;
 }

@@ -1,0 +1,14 @@
+---
+# We'll use defaults from the LLVM style, but with 4 columns indentation.
+BasedOnStyle: Microsoft
+IndentWidth: 4
+ColumnLimit: 0
+AccessModifierOffset: -4
+PointerAlignment: Left
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex:           '^<'
+    Priority:        1
+  - Regex:           '^"'
+    Priority:        2
+AllowShortFunctionsOnASingleLine: InlineOnly

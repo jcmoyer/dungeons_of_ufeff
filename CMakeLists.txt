@@ -1,5 +1,5 @@
-project(ufeffjam)
 cmake_minimum_required(VERSION 3.16)
+project(ufeffjam VERSION 1.0)
 
 add_subdirectory(thirdparty EXCLUDE_FROM_ALL)
 
@@ -35,7 +35,9 @@ add_executable(ufeffjam
   "src/st_gameover.cpp"
   "src/st_battlestats.cpp"
   "src/ui.cpp"
-  "src/st_gamewin.cpp")
+  "src/st_gamewin.cpp"
+  "src/global_services.cpp"
+  "src/st_options.cpp")
 target_link_libraries(ufeffjam SDL2 SDL2main fmt gl3w glm)
 set_property(TARGET ufeffjam PROPERTY CXX_STANDARD 17)
 
@@ -124,12 +126,22 @@ install(FILES
 ##############################################################################
 # models
 ##############################################################################
-install(FILES
-  assets/models/bf_dungeon.obj
-  assets/models/bf_sanctum.obj
-  assets/models/bf_lair.obj
+function(add_model modelname)
+    add_custom_command(
+        OUTPUT "${CMAKE_BINARY_DIR}/assets/models/${modelname}.bin"
+        DEPENDS "${CMAKE_SOURCE_DIR}/assets/models/${modelname}.blend"
+        COMMAND blender "${CMAKE_SOURCE_DIR}/assets/models/${modelname}.blend" --python-exit-code 1 -b -P "${CMAKE_SOURCE_DIR}/scripts/blender_export.py" -- "${CMAKE_BINARY_DIR}/assets/models/${modelname}.bin"
+    )
+    add_custom_target(UMDL_${modelname} ALL DEPENDS "assets/models/${modelname}.bin")
+    install(FILES
+        "${CMAKE_BINARY_DIR}/assets/models/${modelname}.bin"
+        DESTINATION assets/models
+    )
+endfunction()
 
-  DESTINATION assets/models)
+add_model("bf_dungeon")
+add_model("bf_sanctum")
+add_model("bf_lair")
 
 ##############################################################################
 # misc

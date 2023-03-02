@@ -1,12 +1,14 @@
 #pragma once
 
-#include "shader.hpp"
 #include <glm/mat4x4.hpp>
+
 #include "rectangle.hpp"
+#include "shader.hpp"
 
 struct texture;
 
-class screen_renderer {
+class screen_renderer
+{
 public:
     screen_renderer();
 

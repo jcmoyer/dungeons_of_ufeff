@@ -47,7 +47,7 @@ def write_objects(f, layer):
     for obj in layer['objects']:
         print(obj)
         write_str(f, obj['name'])
-        write_str(f, obj['type'])
+        write_str(f, obj['class'])
         f.write(struct.pack('<II', obj['x'], obj['y']))
         write_props(f, obj.get('properties', []))
 

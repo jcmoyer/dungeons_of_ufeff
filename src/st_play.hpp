@@ -7,40 +7,46 @@ class water_renderer;
 struct foam_emitter;
 
 #include <SDL.h>
-#include "camera.hpp"
-#include "world.hpp"
-#include "dialoguebox.hpp"
-#include "gamestate.hpp"
-#include "timer.hpp"
-#include "npc.hpp"
-#include <unordered_map>
 #include <deque>
 #include <glm/vec2.hpp>
+#include <unordered_map>
+
 #include "battle/encounters.hpp"
+#include "camera.hpp"
+#include "dialoguebox.hpp"
+#include "gamestate.hpp"
+#include "npc.hpp"
+#include "timer.hpp"
+#include "world.hpp"
 
 struct audio_parameters;
 
-struct scheduled_script {
+struct scheduled_script
+{
     timer t;
     uint32_t script_id;
 };
 
-struct battle_transition_particle {
+struct battle_transition_particle
+{
     glm::vec2 pos, prev_pos, vel;
 };
 
 // TODO yeah these need to be moved get over it
-struct water_draw_cmd {
+struct water_draw_cmd
+{
     rectangle dest;
     float world_x, world_y;
 };
 
-struct light_draw_cmd {
-    uint32_t world_x, world_y;
+struct light_draw_cmd
+{
+    int world_x, world_y;
     float radius;
 };
 
-class st_play : public gamestate {
+class st_play : public gamestate
+{
 public:
     st_play(game* owner, shared_state* state);
 
@@ -48,7 +54,7 @@ public:
     void update() override;
     void render(double a) override;
     void handle_event(const SDL_Event& ev) override;
-    void enter() override;
+    void enter(gamestate* old) override;
     void leave() override;
 
 private:
@@ -92,7 +98,8 @@ private:
     size_t player_handle;
     int steps = 0;
 
-    enum substate {
+    enum substate
+    {
         none,
         message,
 
@@ -151,9 +158,11 @@ private:
     friend class st_interact_context;
 };
 
-class st_interact_context : public npc_context {
+class st_interact_context : public npc_context
+{
 public:
-    st_interact_context(st_play* o, entity* e) : owner{ o }, ent{ e } {}
+    st_interact_context(st_play* o, entity* e)
+        : owner{o}, ent{e} {}
 
 private:
     st_play* owner;

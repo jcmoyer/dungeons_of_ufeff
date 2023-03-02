@@ -1,18 +1,21 @@
 #pragma once
 
-#include "shader.hpp"
 #include <glm/mat4x4.hpp>
-#include "rectangle.hpp"
 #include <vector>
+
+#include "rectangle.hpp"
+#include "shader.hpp"
 
 struct texture;
 
-struct spritebatch_vertex {
-  float x, y, u, v;
-  float r, g, b, a;
+struct spritebatch_vertex
+{
+    float x, y, u, v;
+    float r, g, b, a;
 };
 
-class spritebatch {
+class spritebatch
+{
 public:
     spritebatch();
 
@@ -34,7 +37,7 @@ protected:
 
 private:
     std::vector<spritebatch_vertex> batch;
-    
+
     GLuint vao;
     GLuint buffer;
 

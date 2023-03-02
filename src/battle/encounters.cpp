@@ -1,6 +1,7 @@
 #include "encounters.hpp"
 #include "../random.hpp"
 
+// clang-format off
 encounter_set enc_dungeon{
     {
         {BCI_SLIME, BCI_SLIME, BCI_NULL, BCI_NULL, BCI_NULL, BCI_NULL, BCI_NULL, BCI_NULL},
@@ -27,6 +28,7 @@ encounter_set enc_lair{
         //{BCI_RAGWORM, BCI_NULL, BCI_NULL, BCI_NULL , BCI_NULL, BCI_NULL, BCI_NULL , BCI_NULL},
     }
 };
+// clang-format on
 
 const encounter& encounter_set::random_encounter() const {
     size_t i = (size_t)random::rand_int(0, (int)encounters.size() - 1);

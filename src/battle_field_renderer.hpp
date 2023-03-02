@@ -1,22 +1,26 @@
 #pragma once
 
 #include <glm/mat4x4.hpp>
+
 #include "shader.hpp"
 
 struct texture;
 struct rectangle;
 
-struct battle_field_vertex {
+struct battle_field_vertex
+{
     float x, y, z;
     float u, v;
     float nx, ny, nz;
 };
 
-struct battle_field_mesh {
+struct battle_field_mesh
+{
     std::vector<battle_field_vertex> vertices;
 };
 
-class battle_field_renderer {
+class battle_field_renderer
+{
 public:
     battle_field_renderer();
 

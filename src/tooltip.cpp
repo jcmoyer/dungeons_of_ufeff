@@ -1,4 +1,5 @@
 #include "tooltip.hpp"
+
 #include "imm_renderer.hpp"
 #include "texture_manager.hpp"
 
@@ -13,10 +14,10 @@ constexpr rectangle rects[9] = {
 
     {0, 29, 3, 3},
     {3, 29, 3, 3},
-    {29, 29, 3, 3}
-};
+    {29, 29, 3, 3}};
 
-void tooltip::draw(imm_renderer* renderer, const SDL_Rect& dest) {
+void tooltip::draw(imm_renderer* renderer, const SDL_Rect& dest)
+{
     glBindTexture(GL_TEXTURE_2D, tex->tex);
 
     // == ROW 1 ==

@@ -1,12 +1,14 @@
 #pragma once
 
-#include "shader.hpp"
 #include <glm/mat4x4.hpp>
+
 #include "rectangle.hpp"
+#include "shader.hpp"
 
 struct texture;
 
-class imm_renderer {
+class imm_renderer
+{
 public:
     imm_renderer();
 

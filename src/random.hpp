@@ -1,21 +1,22 @@
 #pragma once
 
-#include <random>
 #include <ctime>
+#include <random>
 
-struct random {
+struct random
+{
 public:
-  random();
+    random();
 
-  static int rand_int(int min, int max);
-  static float rand_real();
-  static float rand_real(float min, float max);
+    static int rand_int(int min, int max);
+    static float rand_real();
+    static float rand_real(float min, float max);
 
-  static bool chance(float rate);
+    static bool chance(float rate);
 
 private:
-  static random& instance();
+    static random& instance();
 
-  //std::random_device dev;
-  std::mt19937 dev{ time(0) };
+    //std::random_device dev;
+    std::mt19937 dev{(std::mt19937::result_type)time(0)};
 };

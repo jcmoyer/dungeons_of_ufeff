@@ -1,10 +1,11 @@
 #include "battle_object_renderer.hpp"
 
+#include <GL/gl3w.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include <GL/gl3w.h>
-#include "texture_manager.hpp"
+
 #include "rectangle.hpp"
+#include "texture_manager.hpp"
 
 constexpr auto default_vssrc = R"(#version 330 core
 layout (location = 0) in vec3 aPosition;
@@ -54,7 +55,8 @@ void main() {
 }
 )";
 
-battle_object_renderer::battle_object_renderer() {
+battle_object_renderer::battle_object_renderer()
+{
     prog = create_program_from_source(default_vssrc, default_fssrc);
 
     uView = glGetUniformLocation(prog.get_handle(), "uView");
@@ -76,7 +78,8 @@ battle_object_renderer::battle_object_renderer() {
     glEnableVertexAttribArray(2);
 }
 
-void battle_object_renderer::draw_quad(const texture* tex, const rectangle& src, float x, float y, float w, float h, bool flash, bool flip_x, float color_mult) {
+void battle_object_renderer::draw_quad(const texture* tex, const rectangle& src, float x, float y, float w, float h, bool flash, bool flip_x, float color_mult)
+{
     int s_left = src.x;
     int s_right = src.x + src.w;
     int s_top = src.y;
@@ -87,10 +90,11 @@ void battle_object_renderer::draw_quad(const texture* tex, const rectangle& src,
     float uv_top = s_top / (float)tex->height;
     float uv_bottom = s_bottom / (float)tex->height;
 
-    if (flip_x) {
+    if (flip_x)
+    {
         std::swap(uv_left, uv_right);
     }
-    
+
     rectanglef dest;
     dest.x = x;
     dest.y = y;
@@ -102,12 +106,13 @@ void battle_object_renderer::draw_quad(const texture* tex, const rectangle& src,
     // we flip the Y coordinates here because Y is up
     // I still dont' understand this garbage, TODO: research
     battle_object_vertex vertices[] = {
-        { dest.x + dest.w, dest.y, 0, uv_right, uv_bottom, color_mult, flash_x },
-        { dest.x + dest.w, dest.y + dest.h, 0, uv_right, uv_top, color_mult, flash_x },
-        { dest.x,  dest.y, 0, uv_left, uv_bottom, color_mult, flash_x },
-        { dest.x + dest.w, dest.y + dest.h, 0, uv_right, uv_top, color_mult, flash_x },
-        { dest.x, dest.y + dest.h, 0, uv_left, uv_top, color_mult, flash_x },
-        { dest.x, dest.y, 0, uv_left, uv_bottom, color_mult, flash_x }
+        {dest.x + dest.w, dest.y + dest.h, 0, uv_right, uv_top, color_mult, flash_x},
+        {dest.x, dest.y + dest.h, 0, uv_left, uv_top, color_mult, flash_x},
+        {dest.x, dest.y, 0, uv_left, uv_bottom, color_mult, flash_x},
+
+        {dest.x, dest.y, 0, uv_left, uv_bottom, color_mult, flash_x},
+        {dest.x + dest.w, dest.y, 0, uv_right, uv_bottom, color_mult, flash_x},
+        {dest.x + dest.w, dest.y + dest.h, 0, uv_right, uv_top, color_mult, flash_x},
     };
 
     // TODO: index this
@@ -121,7 +126,8 @@ void battle_object_renderer::draw_quad(const texture* tex, const rectangle& src,
 
 #include "glm/gtx/rotate_vector.hpp"
 
-void battle_object_renderer::draw_quad_rotated(const texture* tex, const rectangle& src, float x, float y, float w, float h, float angle, bool flash) {
+void battle_object_renderer::draw_quad_rotated(const texture* tex, const rectangle& src, float x, float y, float w, float h, float angle, bool flash)
+{
     int s_left = src.x;
     int s_right = src.x + src.w;
     int s_top = src.y;
@@ -138,10 +144,10 @@ void battle_object_renderer::draw_quad_rotated(const texture* tex, const rectang
     dest.w = w;
     dest.h = h;
 
-    glm::vec2 top_left{ -w / 2.f, -h / 2.f };
-    glm::vec2 top_right{ w / 2.f, -h / 2.f };
-    glm::vec2 bottom_left{ -w / 2.f, h / 2.f };
-    glm::vec2 bottom_right{ w / 2.f, h / 2.f };
+    glm::vec2 top_left{-w / 2.f, -h / 2.f};
+    glm::vec2 top_right{w / 2.f, -h / 2.f};
+    glm::vec2 bottom_left{-w / 2.f, h / 2.f};
+    glm::vec2 bottom_right{w / 2.f, h / 2.f};
     top_left = glm::rotate(top_left, angle);
     top_right = glm::rotate(top_right, angle);
     bottom_left = glm::rotate(bottom_left, angle);
@@ -164,12 +170,12 @@ void battle_object_renderer::draw_quad_rotated(const texture* tex, const rectang
     // we flip the Y coordinates here because Y is up
     // I still dont' understand this garbage, TODO: research
     battle_object_vertex vertices[] = {
+        {bottom_right.x, bottom_right.y, 0, uv_right, uv_top, 1, flash_x},
+        {bottom_left.x, bottom_left.y, 0, uv_left, uv_top, 1, flash_x},
+        {top_left.x, top_left.y, 0, uv_left, uv_bottom, 1, flash_x},
         {top_left.x, top_left.y, 0, uv_left, uv_bottom, 1, flash_x},
         {top_right.x, top_right.y, 0, uv_right, uv_bottom, 1, flash_x},
-        {bottom_left.x, bottom_left.y, 0, uv_left, uv_top, 1, flash_x},
-        {bottom_left.x, bottom_left.y, 0, uv_left, uv_top, 1, flash_x},
         {bottom_right.x, bottom_right.y, 0, uv_right, uv_top, 1, flash_x},
-        {top_right.x, top_right.y, 0, uv_right, uv_bottom, 1, flash_x},
     };
 
     // TODO: index this
@@ -181,7 +187,8 @@ void battle_object_renderer::draw_quad_rotated(const texture* tex, const rectang
     batch.push_back(vertices[5]);
 }
 
-void battle_object_renderer::begin(const glm::mat4& view, const glm::mat4& projection) {
+void battle_object_renderer::begin(const glm::mat4& view, const glm::mat4& projection)
+{
     glUseProgram(prog.get_handle());
     glBindVertexArray(vao);
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
@@ -190,7 +197,8 @@ void battle_object_renderer::begin(const glm::mat4& view, const glm::mat4& proje
     glUniformMatrix4fv(uProjection, 1, GL_FALSE, glm::value_ptr(projection));
 }
 
-void battle_object_renderer::end() {
+void battle_object_renderer::end()
+{
     glBufferData(GL_ARRAY_BUFFER, batch.size() * sizeof(battle_object_vertex), batch.data(), GL_STREAM_DRAW);
     glDrawArrays(GL_TRIANGLES, 0, batch.size());
     batch.clear();
