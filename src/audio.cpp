@@ -4,7 +4,7 @@
 #include <filesystem>
 
 #include "mathutil.hpp"
-#include "stb_vorbis.h"
+#include "stb_vorbis.c"
 
 static audio_buffer load_audio(const char* filename)
 {

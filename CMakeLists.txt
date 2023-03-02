@@ -7,12 +7,10 @@ add_executable(ufeffjam
   "src/main.cpp"
   "src/game.cpp"
   "src/camera.cpp"
-  "src/stb_image.c"
   "src/texture_manager.cpp"
   "src/bmfont.cpp"
   "src/imm_renderer.cpp"
   "src/tooltip.cpp"
-  "src/stb_vorbis.c"
   "src/audio.cpp"
   "src/spritebatch.cpp"
   "src/water_renderer.cpp"
@@ -38,7 +36,7 @@ add_executable(ufeffjam
   "src/st_gamewin.cpp"
   "src/global_services.cpp"
   "src/st_options.cpp")
-target_link_libraries(ufeffjam SDL2 SDL2main fmt gl3w glm)
+target_link_libraries(ufeffjam SDL2 SDL2main fmt gl3w glm stb_vorbis stb_image)
 set_property(TARGET ufeffjam PROPERTY CXX_STANDARD 17)
 
 install(TARGETS ufeffjam SDL2 RUNTIME DESTINATION .)
