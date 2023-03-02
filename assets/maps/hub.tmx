@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="29">
+ <editorsettings>
+  <export target="hub.json" format="json"/>
+ </editorsettings>
+ <properties>
+  <property name="map_name" value="Empyrean Heights"/>
+  <property name="map_subtitle" value="Fortress in the Sky"/>
+  <property name="music_name" value="ambient_ominous"/>
+  <property name="water_direction_x" type="float" value="0.1"/>
+  <property name="water_direction_y" type="float" value="0.1"/>
+  <property name="water_drift_x" type="float" value="0.05"/>
+  <property name="water_drift_y" type="float" value="0.09"/>
+  <property name="water_speed" type="float" value="1"/>
+ </properties>
+ <tileset firstgid="1" source="amalgamation.tsx"/>
+ <layer id="1" name="base" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2mFu8jAMBuC04yKT2Lpz7JOA+x9hJ/lUbdFcYydOUojXvD9eAW1HwQ9O2q7XEMIVQRAE6ZZ/U3l6f+YjpsYBLn4tYOLPAib+LGDizwIm+1ssIR+Y+LGwmvT+vt5TYxGXp9bD5PEWfJ11W8kDTm0e3EB6bvVA75R7aLXlNtL6FpPeNelR8xaPlnVa3sN3ju5RM4Zr80FNSixuP+lds0fmPWx/eyV5hgf9fL1r9YzcGkxSda1dp1mM4nEN99+71SO+5o8tHkcfp2j27BFaY+m51WLEsYpmjx7hNZZeWz1GHas0jxaTWGv62GIBj+9Yapcy0ZJ7H3i0e1hNLH8PD7kG1KTEpXTe5tvD4/4YS3KxHD/l5gvpec5iRI81F4MJra9UTy10O+1vtP1eHNSml4elT1L1XZ8HVudgcEvtc2SPa4GJlFj3KWwfayzi9cPRPSwmORdrUhbS5xop/HvH32bOhNuEBgdpfILHdpmlV7gNH68sfx/7Ah5pj2uBiTSWlVhIn2NUj5zRJeTHrxqP2INa/eGR9riF7bEP753VwDJeacdPqH+Zh7T+xrKQSH78feGxrwcP9ZC2h8c+HmcSvj4uXw34eAWP/TzWGk/T1iKGG62Z2bWRebr3S3nwnH5crTk5qNsjQmu8eqx1jS78cWHbcY+ZbXdh+0h9jjn89thiyOygdo/0mKZteC9Qm1nxmARLLXz/tL6je9DapeqoWWgmJZmF9xvNw1qrWOuUxaJsZ93HC3sfPp+cBvCw/A5T0c7V9wjvFz6/HM3js/B+kV4eXwmf3jXcO3/BI/W6d/32jqf5g88P63xCzzf5/HI0j9LjHxxfPd/jQ0jKhVvMBgdpHx+CxxUeWY8l48HP41s8cjmyh1YjrT/OQb9+Vdsfcb6w5sVBDT15SL/ZFo+a9K5hDw+ryTMd4AGPR4fXudRjEZLzwHiV9qDnCTU9olmcgv4/JHjkPeI5nGRQ47Eei74KmeHR7HEOssciBB5tHtrv3hqtP/h4RT32nN971/ARHtGk5pqT5pHqjzd4mDzOpFa5TMr1RKuHdC4/sodU31x/SPcpSBbrenrt4zVsr3G8EZOS47sje/D7F/h9Ppbj1vh8Ycs1w5jYg7wXR/TgtaJjh3ifT9DHHW255iDdQwSP37pI/cDHJK3uLxkP/p4zc4mvaY+M6MG/T2ps4R6fisE54UHHqJk4aNfmR/egJtIcovXHSVkej5+08So1fsHj/vxjj/mDj01SD0pjJTzyHtr/7JLL2RxUEnjczyO5cxPt2Nhy7qK9hoct3EOrY00vtBxXwaO8tnEZnd/3tBjRQwrtFYvl3gbw8Jve9YQHPFpzgQc8/kjg4Ss96goPePyVwMNX4OEr8PAVePgKPHwFHr4CD1+Bh6/Aw1fg4Svw8BV4+Ao8fAUevgIPX4GHr8DDV+DhKyN6/AenP+fr
+  </data>
+ </layer>
+ <layer id="3" name="detail" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztm3Fu0zAUhzu4ATfgD3YDLoCGOMfaQXeNiQntGhRp20EQ7B7sIMRQq69Pz4ntOI0Xf59ktXXs2Ho/v2c7cVcrAACokYuzuXsA8HLAX04Htq6XW6GN0+kWrarF8iN8Kw/LbrljH58BSIfYlYa3V6l4Q9yqD3wijTnthVb1suvSq9dz9+K0lByPbzLu1bo/fM+o07rNlk6Mvj+m70Y1xPjIqXwC34MlwH5wuRCj8sBu9ZMab0o//1oqOfsQqBMdx/TYt3yB2BcHflIftWiy2ycYp0lMvBqipecjsdTiJ3DMKXXBL+JI0SQ3XqFFPaBFPs5X5Nondw3k6qHDNEiNrHhVQj8AgBQuu7Tu0qbnWon9IITxdl6r/I267tmqctuVrR+koe1s4a9LH7D08GVdOamNa2OsVp+7dOX7MfJeNXOTUWe7svXQedrf/G+tVd94+J3Rv5dMqh6W3WOuaazY2DpubMoY1Pfd29rb+4vLE+l6X16Wi703/OfPiLrflB3vsOuseD2u97/Rowy5PoJ/lMfN5bnzx32X9yDSI/PHKC6NvJ2RNGPXV1Ybsp27gfpL1U+vc79GlnPE7j80oTbg2M597yhkuZj9uS4nQY8w3s5DNgrtF7UeHyPaRI8wsXqE3qmnPt/lPWE/sXrIsrngF8P4cY8e9eDtPPQs3IpZKfHK63Gz0LVqKaaOWfcZdVpG2tjyETmeU/V46tKv9C41jYxDlo84DTbiu4T359MgNVmrJPPH4t/zhc5JwLRc9VxjvdVPzlw9Nl5JP2zdX+TZnthYdDFBP573n637y5j93Zg17HPgd6t6yLM155nrIb+GfYoo+85o46f6dLSqhzyfnnr+/KF8d/7hNGtVD03K/6FC59I+RNS1/ETT+pzuyf3f4NuCfXBnKvCRAznz+5Aeqesx9Djg9Mid30twzhxyhJ7n++Z7Z7tY7frmDX8P3xbvDoex4piz4/uzw3dJ6toNDdKw/EYi87VtQ3MS/lAWr9GQPS0t0QDgmE9zdwAAmoO4AwAAAAAAAAAAAAAAAAAAAFCGv0SCr8o=
+  </data>
+ </layer>
+ <layer id="5" name="fringe" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2TsOgCAURUHcqytzpbbaEPAHN85U2hgTfceApQAAQL91qZ/DX1x9980M8JWneqNbAAAAWawHgTT226GP/7VACr0CUugVkEKv5raNvgGYiF7BWesMmBXgDce2tBzPcm0AxvL94A7Pj1lZn0Mb+7tACr0CUugVkEKvAAAAAAAAAAAAAAAAAAAA6nbyVRP4
+  </data>
+ </layer>
+ <objectgroup id="4" name="objects">
+  <object id="6" name="playerspawn_door" type="door" x="960" y="1008" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="1"/>
+    <property name="sprite_id" type="int" value="8"/>
+   </properties>
+  </object>
+  <object id="7" name="guide" type="npc" x="1072" y="960" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="0"/>
+    <property name="sprite_id" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="14" name="east_tower_basement_door" type="door" x="1344" y="752" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="2"/>
+    <property name="sprite_id" type="int" value="9"/>
+   </properties>
+  </object>
+  <object id="15" type="npc" x="1168" y="976" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="3"/>
+    <property name="sprite_id" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="17" name="east_tower_basement_portal" type="portal" x="1344" y="720" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="east_tower_basement"/>
+    <property name="exit_name" value="hub_entrance"/>
+   </properties>
+  </object>
+  <object id="18" name="east_tower_basement_entrance" x="1344" y="736" width="16" height="16"/>
+  <object id="20" name="sanctum entrance" type="door" x="960" y="608" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="18"/>
+    <property name="sprite_id" type="int" value="9"/>
+   </properties>
+  </object>
+  <object id="22" name="generic_wood_door" type="door" x="1088" y="992" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="1"/>
+    <property name="sprite_id" type="int" value="8"/>
+   </properties>
+  </object>
+  <object id="23" type="npc" x="912" y="1136" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="17"/>
+   </properties>
+  </object>
+  <object id="24" name="sanctum entrance" type="door" x="960" y="560" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="18"/>
+    <property name="sprite_id" type="int" value="9"/>
+   </properties>
+  </object>
+  <object id="25" name="sanctum entrance" type="door" x="960" y="512" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="18"/>
+    <property name="sprite_id" type="int" value="9"/>
+   </properties>
+  </object>
+  <object id="26" name="sanctum entrance" type="door" x="960" y="464" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="18"/>
+    <property name="sprite_id" type="int" value="9"/>
+   </properties>
+  </object>
+  <object id="27" name="east_tower_basement_portal" type="portal" x="960" y="256" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="hub_entrance"/>
+   </properties>
+  </object>
+  <object id="28" name="playerspawn" type="playerspawn" x="960" y="1056" width="16" height="16"/>
+ </objectgroup>
+</map>

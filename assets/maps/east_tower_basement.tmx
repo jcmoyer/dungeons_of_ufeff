@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="79">
+ <properties>
+  <property name="battle_field_name" value="bf_dungeon"/>
+  <property name="dark" type="int" value="1"/>
+  <property name="encounter_set_id" type="int" value="0"/>
+  <property name="map_name" value="East Tower"/>
+  <property name="map_subtitle" value="Deep Inside the Mountain"/>
+  <property name="music_name" value="quagmire_of_lost_souls"/>
+  <property name="water_direction_x" type="float" value="1"/>
+  <property name="water_direction_y" type="float" value="0"/>
+  <property name="water_drift_x" type="float" value="0.05"/>
+  <property name="water_drift_y" type="float" value="0.1"/>
+  <property name="water_speed" type="float" value="1"/>
+ </properties>
+ <tileset firstgid="1" source="amalgamation.tsx"/>
+ <layer id="1" name="base" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztnFuSmzAQRYVxzWQd+YjWEVclZP8ryrhqVG5fuiVhCySk+3GKV8PgPm4kwZjFObcQQgghhBBCCCGEEEIIIaQprl9MEa4NnONIXL7wES4NnGPPYD3MCR+z0+tFxuDyVmrnpKaLWP6vMLX8hO2Li+cTt2mxI/tIXZtCrlM1E46zJOK0mEWZr52XVnzIOvg5PZzgOqwXrU2J5RVz7zP36x3pI9RByPU99yH/Yf4Oxnn3XB8yrxpazulj7WN2dj3IeS1uFse8Gbm+gY8YtfPSgg+JVhfSTU4etfVartHfyMR8BG4uz4XlB33k7jcimg+r3XilPtCHtl0yeq1gey6n6AD7VlfYV+Y5x1uu15HA9hzHGlqtaHFYZ/JvaPm9GdtHdoE+ghMPyHqx4rT+bsg55lsDt9XOSys+NBc41tCQx7HyHjsPPP6o95BTudbGGpaz4EFOF7FsoX0vRr6HHO7XXsU0lj8ZN4MLLddyHqEPm4uYxnxcIN4CvaAbOU8fD8L3Xfab5LMNL2Imt66nyVi21lnPHOlj/d3EPFzEeu/WOYstb8kr66NtH6FWa+emtg98Fjsr6717vm5Zy3ht2+Jji8veSLXfJUjlVnsuNif26ZUWfYxaG5iLnP+9knGxZbzfyP7Vdh+pPMzueQwYW8bj+u8Yr8D62ObDFziu5sErsfSxzoOVtz18aNvpY+2j9HHp4z0fCH3U84FIH/e+0J/puU+1wPbJOK42zmD/yvYRI+Ra9qG8e4zDA2GMjv+f5WE/nKePtY+t47YSLMq6M/vIuZ8dYzbmrdjSPjQnqfNomV8d8Xuqfw6kLx9H1mLq2forbYVG7nPFFjmyrSrRnuc4OXN7fiR7tbMcf7QFx+dtQR9t0ZOP2v2JEuA48512asv4do/j1u5vc/zRLz348Ccld2z57hiU5OU3997kDPuRsrx6j3ive8ulqX29ZPvRLz34qD12eJUt7Xntc93CclJS7yIInHmsfibkbxGkjzAvf7dV+1xH4uLW7+S4T1kXxyK//9JDmOb+loeUIdZ+yOsW6+RYH9o7hOijno+A9i4htiP7kfueX6wT632/5D1S/5uC9WG9B431sp8P6z10WjtCH/v60PKe805A+ihDajyOjjCG4/V9kHWi1YVVM6yLssjvd8jzFjheL0usPUc/2vYA62Q/H+iGPtr2oUEfZcj5LZw2Htfian+WHviXQNZHKrb2Z+mBzwg/vqd3F3LZovZn6YG/ET7cc318JOJrf5YeCLn8VNB8aHH0Ud4H66MNtLx+Or29kMv0cZwPWR+y/8T6qO9DxtJHXR+Y4y2xhD56gD7agj7agj7agj7agj7aYhQf/wGYXBcx
+  </data>
+ </layer>
+ <layer id="2" name="detail" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt3E0KgkAUAGDdt61OEp2kG9hNgrxZ5+gmQSDh4MRAozPp94EMyFu8zXvOj9o0AAAAAAAAAAAAAAAAANt1TYi5tLOnAdXqSycAK3byfKmCPgd5PUsnwCS9DuC/6eP/bW/tV62UveEUt3Y8Ah9dOx4pS78CAMhrmFfZuwFq1wcjy9nNHA8AALVxHgVpzmqkqFzvDMHaPCL3D3oWvB2HuW7ZNAAmxdbh4XfszgvZiq50AkTF1h0sp2u+14h9EwBC9zZ+5YgnP//9Wd4v9QFbklIfsHVhHagLAACo0wsOzSEO
+  </data>
+ </layer>
+ <layer id="3" name="fringe" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2TEKgDAMBdDUy/UinkU8tpNDJa62kveg/LU0/CE0AgAAAAAAAAAAAAAAAAAAAKioz75AcT05zOP916IfazOPObbIu2Ee9extTAAAAGqwBwIAAACM/J8DAADA9+zhAAAAtZwtz6ej5QlVvHXjphMAAAAA/3cBzP4L5g==
+  </data>
+ </layer>
+ <objectgroup id="4" name="objects">
+  <object id="1" name="hub_entrance" x="720" y="672" width="16" height="16"/>
+  <object id="2" name="east_tower_portal" type="portal" x="720" y="656" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="hub"/>
+    <property name="exit_name" value="east_tower_basement_entrance"/>
+   </properties>
+  </object>
+  <object id="3" name="yellow light" type="light" x="672" y="736" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="4" name="playerspawn" type="playerspawn" x="816" y="1264" width="16" height="16"/>
+  <object id="5" name="yellow light" type="light" x="768" y="736" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="6" name="unlit yellow light" type="npc" x="592" y="736" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="4"/>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="8" name="door_1" type="door" x="576" y="576" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="1"/>
+    <property name="sprite_id" type="int" value="9"/>
+   </properties>
+  </object>
+  <object id="9" name="door_1" type="door" x="512" y="576" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="1"/>
+    <property name="sprite_id" type="int" value="9"/>
+   </properties>
+  </object>
+  <object id="10" name="door_1" type="door" x="448" y="576" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="1"/>
+    <property name="sprite_id" type="int" value="9"/>
+   </properties>
+  </object>
+  <object id="13" name="generic metal door" type="door" x="720" y="736" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="24"/>
+    <property name="sprite_id" type="int" value="9"/>
+   </properties>
+  </object>
+  <object id="14" name="unlit yellow light" type="npc" x="496" y="736" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="4"/>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="15" name="unlit yellow light" type="npc" x="576" y="624" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="4"/>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="16" name="unlit yellow light" type="npc" x="448" y="624" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="4"/>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="17" name="easter_egg" type="npc" x="400" y="656" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="1337"/>
+   </properties>
+  </object>
+  <object id="18" name="switch_1" type="switch" x="448" y="544" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="8"/>
+    <property name="sprite_id" type="int" value="12"/>
+   </properties>
+  </object>
+  <object id="19" name="dead body" type="npc" x="464" y="752" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="6"/>
+   </properties>
+  </object>
+  <object id="20" name="dead body" type="npc" x="544" y="608" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="6"/>
+   </properties>
+  </object>
+  <object id="21" name="puzzle_door" type="door" x="384" y="544" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="7"/>
+    <property name="sprite_id" type="int" value="9"/>
+   </properties>
+  </object>
+  <object id="22" name="switch 2" type="switch" x="512" y="544" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="9"/>
+    <property name="sprite_id" type="int" value="12"/>
+   </properties>
+  </object>
+  <object id="23" name="switch 3" type="switch" x="576" y="544" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="10"/>
+    <property name="sprite_id" type="int" value="12"/>
+   </properties>
+  </object>
+  <object id="25" name="fj room torch" type="npc" x="304" y="416" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="11"/>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="4"/>
+    <property name="sprite_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="30" name="fj room torch" type="npc" x="304" y="352" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="11"/>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="4"/>
+    <property name="sprite_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="31" name="fj room torch" type="npc" x="384" y="288" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="11"/>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="4"/>
+    <property name="sprite_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="32" name="fj room torch" type="npc" x="464" y="352" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="11"/>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="4"/>
+    <property name="sprite_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="33" name="fj room torch" type="npc" x="464" y="416" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="11"/>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="4"/>
+    <property name="sprite_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="34" name="fj room torch" type="npc" x="384" y="480" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="11"/>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="4"/>
+    <property name="sprite_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="35" name="fj_chest" type="switch" x="384" y="384" width="16" height="16">
+   <properties>
+    <property name="active" type="int" value="0"/>
+    <property name="interact_id" type="int" value="12"/>
+    <property name="sprite_id" type="int" value="20"/>
+   </properties>
+  </object>
+  <object id="36" name="maze_torch_0" type="npc" x="576" y="352" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="37" name="maze_torch_1" type="npc" x="608" y="448" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="38" name="maze_torch_2" type="npc" x="672" y="352" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="39" name="maze_torch_3" type="npc" x="720" y="432" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="40" name="maze_torch_4" type="npc" x="768" y="368" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="41" name="maze_torch_5" type="npc" x="816" y="400" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="44" name="yellow light" type="light" x="864" y="976" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="45" name="yellow light" type="light" x="576" y="976" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="46" name="yellow light" type="light" x="672" y="976" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="47" name="yellow light" type="light" x="960" y="976" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="48" name="yellow light" type="light" x="1056" y="976" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="49" name="yellow light" type="light" x="1152" y="976" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="50" name="yellow light" type="light" x="1248" y="976" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="51" name="yellow light" type="light" x="1344" y="976" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="52" name="yellow light" type="light" x="1440" y="976" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="53" name="yellow light" type="light" x="1536" y="976" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="54" name="yellow light" type="light" x="288" y="976" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="55" name="yellow light" type="light" x="384" y="976" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="56" name="yellow light" type="light" x="96" y="976" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="57" name="yellow light" type="light" x="192" y="976" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="58" name="yellow light" type="light" x="480" y="976" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="59" name="dead body" type="npc" x="832" y="1248" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="14"/>
+   </properties>
+  </object>
+  <object id="60" name="dead body" type="npc" x="848" y="1120" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="15"/>
+   </properties>
+  </object>
+  <object id="61" name="dead body" type="npc" x="864" y="1168" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="6"/>
+   </properties>
+  </object>
+  <object id="63" name="yellow light" type="light" x="704" y="1296" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="15"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="66" name="dead body" type="npc" x="784" y="1200" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="6"/>
+   </properties>
+  </object>
+  <object id="67" name="yellow light" type="light" x="864" y="1136" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="68" name="yellow light" type="light" x="768" y="1136" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="71" name="yellow light" type="light" x="704" y="1200" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="15"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="72" name="yellow light" type="light" x="928" y="1200" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="15"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="73" name="yellow light" type="light" x="928" y="1296" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="15"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="74" name="yellow light" type="light" x="848" y="576" width="16" height="16">
+   <properties>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="75" name="unlit yellow light" type="npc" x="768" y="976" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="4"/>
+    <property name="light_flicker_radius" type="float" value="0.05"/>
+    <property name="light_radius" type="float" value="5"/>
+    <property name="sprite_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="76" name="generic door" type="door" x="816" y="1360" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="1"/>
+    <property name="sprite_id" type="int" value="8"/>
+   </properties>
+  </object>
+  <object id="77" name="elder door" type="door" x="816" y="1328" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="16"/>
+    <property name="sprite_id" type="int" value="9"/>
+   </properties>
+  </object>
+  <object id="78" name="final_exit" type="portal" x="816" y="1392" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="hub"/>
+    <property name="exit_name" value="east_tower_basement_entrance"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

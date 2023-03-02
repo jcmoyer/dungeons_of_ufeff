@@ -1,0 +1,124 @@
+Anything not listed here is my own work.
+
+
+
+===============================================================================
+= Graphics
+===============================================================================
+
+- https://opengameart.org/content/tiny-16-basic
+  CC-BY 3.0 / OGA-BY 3.0
+
+  Files:
+  - All 2D assets
+
+===============================================================================
+= Sound
+===============================================================================
+
+- https://freesound.org/people/Sheyvan/sounds/475293/
+  CC0 1.0 Universal (CC0 1.0)
+  Public Domain Dedication
+
+  Files:
+  - door.ogg
+
+- https://freesound.org/people/kev_durr/sounds/426206/
+  Attribution 3.0 Unported (CC BY 3.0)
+
+  Files:
+  - torch.ogg
+
+- https://freesound.org/people/felipelnv/sounds/153298/
+  Attribution 3.0 Unported (CC BY 3.0)
+
+  Files:
+  - switch.ogg
+
+- https://freesound.org/people/beerbelly38/sounds/362350/
+  Attribution 3.0 Unported (CC BY 3.0)
+
+  Files:
+  - throw1.ogg
+
+- https://freesound.org/people/qubodup/sounds/54850/
+  CC0 1.0 Universal (CC0 1.0)
+  Public Domain Dedication
+
+  Files:
+  - flashjump.ogg
+
+- https://freesound.org/people/TheFilmLook/sounds/365572/
+  CC0 1.0 Universal (CC0 1.0)
+  Public Domain Dedication
+
+  Files:
+  - stab.ogg
+
+- https://freesound.org/people/qubodup/sounds/442872/
+  CC0 1.0 Universal (CC0 1.0)
+  Public Domain Dedication
+
+  Files:
+  - avenger.ogg
+
+ - https://freesound.org/people/LampEight/sounds/400639/
+  CC0 1.0 Universal (CC0 1.0)
+  Public Domain Dedication
+
+  Files:
+  - ambush.ogg
+
+- https://freesound.org/people/mmaruska/sounds/241108/
+  Attribution 3.0 Unported (CC BY 3.0)
+
+  Files:
+  - chain_mechanism.ogg
+
+- https://freesound.org/people/rodincoil/sounds/271378/
+  CC0 1.0 Universal (CC0 1.0)
+  Public Domain Dedication
+
+  Files:
+  - chest.ogg
+
+- https://freesound.org/people/jymdavis/sounds/210105/
+  Attribution 3.0 Unported (CC BY 3.0)
+
+  Files:
+  - metal_door.ogg
+
+- https://freesound.org/people/LampEight/sounds/123628/
+  CC0 1.0 Universal (CC0 1.0)
+  Public Domain Dedication
+
+  Files:
+  - start.ogg
+
+- https://freesound.org/people/jtap97/sounds/448884/
+  CC0 1.0 Universal (CC0 1.0)
+  Public Domain Dedication
+
+  Files:
+  - slime0.ogg
+  - slime1.ogg
+  - slime2.ogg
+
+- https://freesound.org/people/InspectorJ/sounds/333818/
+  Attribution 3.0 Unported (CC BY 3.0)
+
+  Files:
+  - bone.ogg
+
+- https://freesound.org/people/JoeDoe22/sounds/462579/
+  CC0 1.0 Universal (CC0 1.0)
+  Public Domain Dedication
+
+  Files:
+  - knifedraw.ogg
+
+- https://freesound.org/people/DjCHAOS/sounds/77144/
+  Attribution 3.0 Unported (CC BY 3.0)
+
+  Files:
+  - die.ogg

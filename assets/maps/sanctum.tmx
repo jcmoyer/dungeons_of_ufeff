@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="44">
+ <properties>
+  <property name="battle_field_name" value="bf_sanctum"/>
+  <property name="encounter_set_id" type="int" value="1"/>
+  <property name="map_name" value="Sanctum of Thought"/>
+  <property name="map_subtitle" value="The Final Step"/>
+  <property name="music_name" value="sanctum_of_thought"/>
+  <property name="water_direction_x" type="float" value="-0.1"/>
+  <property name="water_direction_y" type="float" value="-0.1"/>
+  <property name="water_drift_x" type="float" value="0.05"/>
+  <property name="water_drift_y" type="float" value="0.09"/>
+  <property name="water_speed" type="float" value="1"/>
+ </properties>
+ <tileset firstgid="1" source="amalgamation.tsx"/>
+ <layer id="1" name="base" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   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
+  </data>
+ </layer>
+ <layer id="2" name="detail" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt3NtNwzAYhuEc7nrJDiyCkFikbMIuzEF7wRwoN4wBVRVwU8en+PDHfh/JUpVGIvjrbydx2q4DAAAAynruSx8BINsDNbJ736UPAH/2nsVlPHgar63WsWHvGe1BbZ+dj6HrTsP99tPw386a95HG10pfq5+7KXMeLV5vqHVhqvncWahijkXS547+d94eRvt+JfNo0ZzLWhsdMgNMpI9NuEVeAAAT5on86HMAAOQy3VMzNcS35Z6y631ruHPJw7Y2srbOBjex7/GTR7ita1669V3yCJdiDZI8wqXIg3k93JxHiudKqBN/MetjmSl5+Ev5DAt5+HPNI+R5LPLwR33IQh6ykIcs5GH2nvnvkYcs5CHLMo+Y1+nk4Y/6kIU85FG/rxizAQAA5HRcNNN+kKW23wnZK2oDQA2YUwAAAPRa/L1CAAAAAAAAIBbb80jIx7Qm7LJe/OnwGtu9euz7kuwocKF+tm3fPV3WxKG/3454Svcrz9j4STV/PBpyML1Xm9B+PDTUR6X5zO3Y5m3j+a5O6PlWS+OQZKG5M9eXRf3kR58Dt3xqgvoxm5TXMc6LW+7vo+Z/d91mM9l3cTKfQ7WQk+7aw3WbiutFGchBllhjEq5Szh/wl2r+YByT6weaSWCG
+  </data>
+ </layer>
+ <layer id="3" name="fringe" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt1MERwCAIAEHTa4q3jJRgHiiouxUwgtcaAAAAAAAAAAAAAEBtPXsAhuyI27j5c9ktEG1GV7SKE6y4Y38FiKAlwE5mNksPgZ1oFrDC39ZoUryIN7WXHN4dAAAAAAAAAAAAAAAAqO59sicAAAAAAKCiD5X8D84=
+  </data>
+ </layer>
+ <objectgroup id="4" name="objects">
+  <object id="1" name="hub_entrance" x="624" y="1104" width="16" height="16"/>
+  <object id="2" name="avenger_chest" type="switch" x="704" y="880" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="19"/>
+    <property name="sprite_id" type="int" value="20"/>
+   </properties>
+  </object>
+  <object id="3" name="avenger_room_in" x="736" y="912" width="16" height="16"/>
+  <object id="5" name="to_island" type="portal" x="816" y="960" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="island_right"/>
+   </properties>
+  </object>
+  <object id="6" name="island_right" x="1328" y="192" width="16" height="16"/>
+  <object id="7" name="sanctum_first_portal" x="816" y="976" width="16" height="16"/>
+  <object id="8" name="to_entrance" type="portal" x="1344" y="192" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="sanctum_first_portal"/>
+   </properties>
+  </object>
+  <object id="9" name="to_city" type="portal" x="1200" y="240" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="city_top_left"/>
+   </properties>
+  </object>
+  <object id="10" name="city_top_left" x="1216" y="1280" width="16" height="16"/>
+  <object id="11" name="to_island_bottom" type="portal" x="1216" y="1264" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="island_bottom"/>
+   </properties>
+  </object>
+  <object id="12" name="island_bottom" x="1216" y="240" width="16" height="16"/>
+  <object id="13" name="island_top" x="1248" y="144" width="16" height="16"/>
+  <object id="14" name="final_entrance" x="1312" y="512" width="16" height="16"/>
+  <object id="15" name="void_bottom_right" x="672" y="240" width="16" height="16"/>
+  <object id="16" name="void_bottom_left" x="608" y="240" width="16" height="16"/>
+  <object id="17" name="void_top_left" x="624" y="176" width="16" height="16"/>
+  <object id="18" name="void_top_right" x="640" y="176" width="16" height="16"/>
+  <object id="19" name="city_top_right" x="1328" y="1280" width="16" height="16"/>
+  <object id="20" name="city_bottom_right" x="1328" y="1392" width="16" height="16"/>
+  <object id="21" name="trick_portal" type="portal" x="1328" y="1376" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="sanctum_first_portal"/>
+   </properties>
+  </object>
+  <object id="22" name="portal_to_void" type="portal" x="1328" y="1264" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="void_bottom_left"/>
+   </properties>
+  </object>
+  <object id="24" name="portal_to_city_void_bl" type="portal" x="592" y="240" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="city_top_right"/>
+   </properties>
+  </object>
+  <object id="25" name="portal_to_oasis_s" type="portal" x="672" y="224" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="oasis_s"/>
+   </properties>
+  </object>
+  <object id="26" name="oasis_s" x="256" y="1488" width="16" height="16"/>
+  <object id="27" name="to_void_br" type="portal" x="256" y="1504" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="void_bottom_right"/>
+   </properties>
+  </object>
+  <object id="28" name="to_avenger_room" type="portal" x="144" y="1408" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="avenger_room_in"/>
+   </properties>
+  </object>
+  <object id="29" name="avenger_room_out" type="portal" x="736" y="896" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="oasis_w"/>
+   </properties>
+  </object>
+  <object id="30" name="oasis_w" x="160" y="1408" width="16" height="16"/>
+  <object id="31" name="oasis_n" x="256" y="1344" width="16" height="16"/>
+  <object id="32" name="oasis_e" x="352" y="1408" width="16" height="16"/>
+  <object id="33" name="to_void_tl" type="portal" x="256" y="1328" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="void_top_left"/>
+   </properties>
+  </object>
+  <object id="34" name="trick_portal" type="portal" x="608" y="176" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="sanctum_first_portal"/>
+   </properties>
+  </object>
+  <object id="35" name="to_final" type="portal" x="656" y="176" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="final_entrance"/>
+   </properties>
+  </object>
+  <object id="36" name="to_island_top" type="portal" x="368" y="1408" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="island_top"/>
+   </properties>
+  </object>
+  <object id="37" name="to_oasis_e" type="portal" x="1248" y="128" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="oasis_e"/>
+   </properties>
+  </object>
+  <object id="38" name="oracle_1" type="npc" x="656" y="704" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="20"/>
+    <property name="sprite_id" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="39" name="oracle_2" type="npc" x="1264" y="576" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="21"/>
+    <property name="sprite_id" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="40" name="out_of_final_room" type="portal" x="1312" y="496" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="sanctum"/>
+    <property name="exit_name" value="void_top_right"/>
+   </properties>
+  </object>
+  <object id="41" name="oracle_1" type="npc" x="1344" y="1296" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="23"/>
+    <property name="sprite_id" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="43" name="to_lair" type="portal" x="1264" y="624" width="16" height="16">
+   <properties>
+    <property name="exit_map" value="lair"/>
+    <property name="exit_name" value="lair_entrance"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

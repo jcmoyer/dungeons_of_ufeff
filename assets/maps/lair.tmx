@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="46">
+ <properties>
+  <property name="battle_field_name" value="bf_lair"/>
+  <property name="encounter_set_id" type="int" value="2"/>
+  <property name="map_name" value="Lair"/>
+  <property name="map_subtitle" value="Doom Awaits"/>
+  <property name="music_name" value="ambient_ominous"/>
+  <property name="water_direction_x" type="float" value="0"/>
+  <property name="water_direction_y" type="float" value="0"/>
+  <property name="water_drift_x" type="float" value="0.2"/>
+  <property name="water_drift_y" type="float" value="0.1"/>
+  <property name="water_speed" type="float" value="0"/>
+ </properties>
+ <tileset firstgid="1" source="amalgamation.tsx"/>
+ <layer id="1" name="base" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt201qwzAQBlAXnaR402skm97/RqWLgknH1iiJI8V+i0d+GIQ0X3A8gcwf0zQDAAAAAAAAAAAAAAAAAHTwPbXrveejuicLmcjjLOQxlq/pfr33fkTlAb33DsDzfS7Mi8da7VpdZi33Xts9ruUQZZHJbW1d98Ntvb4GojxqdVEeZpR8FlH/1jLLZrusNTfGlmev9e+27vZ5S3byiEUz8yVZl3UJ1jDH75NH5jP9t15ZvFcqevflHfPIXmei9YiVZP+iOnm8RrZ/8thXy5z3q/Y93LIWj+dRAltr9j7fu8nmkZ0PWvM9m1ofs/3Lzgey2Fbr4x55bL0+u2fNvWeen0fMowxwliPI9PHMv+WNyLVoLPIYizzGUgbYAwAAAAAAAAAAAAD/+a/eWOQxFnmMRR5jkQfwaj+3soto
+  </data>
+ </layer>
+ <layer id="2" name="detail" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T+1lC6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAbnEAAAQ==
+  </data>
+ </layer>
+ <layer id="3" name="fringe" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt0TEJAAAIAEHj2MT+jZxdXUS4S/DwEQAAAAAAAAAAAAAAAAAAAAAAAHxV1wEMeR3A4AcAAAAAAAAAAAAAAAAAAAAAAAAAWw06fACY
+  </data>
+ </layer>
+ <objectgroup id="4" name="objects">
+  <object id="1" name="playerspawn" type="playerspawn" x="816" y="880" width="16" height="16"/>
+  <object id="2" name="flame" type="light" x="928" y="832" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="3" name="flame" type="light" x="752" y="928" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="4" name="flame" type="light" x="816" y="816" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="5" name="flame" type="light" x="896" y="928" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="6" name="flame" type="light" x="816" y="992" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="7" name="flame" type="light" x="624" y="912" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="8" name="flame" type="light" x="656" y="832" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="9" name="flame" type="light" x="592" y="816" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="10" name="flame" type="light" x="640" y="720" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="11" name="flame" type="light" x="592" y="656" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="12" name="flame" type="light" x="752" y="704" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="13" name="flame" type="light" x="832" y="656" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="14" name="flame" type="light" x="912" y="704" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="15" name="flame" type="light" x="960" y="672" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="16" name="flame" type="light" x="720" y="1008" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="17" name="flame" type="light" x="832" y="1056" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="18" name="flame" type="light" x="912" y="992" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="19" name="flame" type="light" x="976" y="880" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="20" name="flame" type="light" x="1008" y="1008" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="21" name="flame" type="light" x="912" y="1072" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="22" name="flame" type="light" x="784" y="1104" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="23" name="flame" type="light" x="656" y="1056" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="24" name="flame" type="light" x="576" y="1104" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="25" name="flame" type="light" x="576" y="992" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="26" name="flame" type="light" x="448" y="1104" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="27" name="flame" type="light" x="512" y="1152" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="28" name="flame" type="light" x="448" y="976" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="29" name="flame" type="light" x="368" y="1072" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="30" name="flame" type="light" x="400" y="944" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="31" name="flame" type="light" x="352" y="896" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="32" name="flame" type="light" x="448" y="880" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="33" name="flame" type="light" x="384" y="816" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="34" name="flame" type="light" x="496" y="832" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="35" name="flame" type="light" x="400" y="736" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="36" name="flame" type="light" x="464" y="704" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="37" name="flame" type="light" x="288" y="720" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="38" name="flame" type="light" x="448" y="656" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="39" name="flame" type="light" x="496" y="576" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="40" name="flame" type="light" x="544" y="656" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="41" name="flame" type="light" x="624" y="592" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="42" name="flame" type="light" x="624" y="672" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="43" name="flame" type="light" x="768" y="784" width="16" height="16">
+   <properties>
+    <property name="sprite_id" type="int" value="13"/>
+   </properties>
+  </object>
+  <object id="44" name="ragworm" type="npc" x="528" y="912" width="16" height="16">
+   <properties>
+    <property name="interact_id" type="int" value="22"/>
+    <property name="sprite_id" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="45" name="lair_entrance" x="848" y="912" width="16" height="16"/>
+ </objectgroup>
+</map>

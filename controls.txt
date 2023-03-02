@@ -1,0 +1,21 @@
+== Universal controls =========================================================
+
+F10             change window size, locked to 2:1 aspect ratio upscaled
+Alt+Enter       toggle fullscreen
+
+
+
+== Overworld controls =========================================================
+
+Arrows          move
+X               interact
+
+
+
+== Combat controls ============================================================
+
+Arrows          move
+Alt             jump
+X               attack
+
+additional controls can be discovered in-game
