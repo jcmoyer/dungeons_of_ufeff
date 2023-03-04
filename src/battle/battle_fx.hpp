@@ -1,8 +1,10 @@
 #pragma once
 
+#include <glm/common.hpp>
 #include <glm/vec2.hpp>
 
 #include "../animation.hpp"
+#include "../animation_data.hpp"
 #include "../direction.hpp"
 
 struct battle_fx
@@ -44,7 +46,7 @@ struct battle_fx
 
     glm::vec2 interp_pos(double a) const
     {
-        return glm::lerp(prev_pos, pos, (float)a);
+        return glm::mix(prev_pos, pos, (float)a);
     }
 
     rectanglef worldspace_interp_rect(double a) const

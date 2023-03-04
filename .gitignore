@@ -1,3 +1,7 @@
 # Visual Studio directories
 .vs/
 out/
+
+# clangd
+.cache/
+build/

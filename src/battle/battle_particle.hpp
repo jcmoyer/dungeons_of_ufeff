@@ -1,5 +1,6 @@
 #pragma once
 
+#include <glm/common.hpp>
 #include <glm/vec2.hpp>
 
 #include "../animation.hpp"
@@ -52,7 +53,7 @@ struct battle_particle
 
     glm::vec2 interp_pos(double a) const
     {
-        return glm::lerp(prev_pos, pos, (float)a);
+        return glm::mix(prev_pos, pos, (float)a);
     }
 
     rectanglef worldspace_interp_rect(double a) const

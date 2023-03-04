@@ -90,7 +90,6 @@ void st_options::handle_event(const SDL_Event& ev)
     if (ev.type == SDL_MOUSEBUTTONDOWN && ev.button.button == SDL_BUTTON_LEFT)
     {
         glm::vec2 cursor = owner->unproject({ev.button.x, ev.button.y});
-        bool any_hit = false;
 
         for (option_button& b : input_buttons)
         {
@@ -98,16 +97,13 @@ void st_options::handle_event(const SDL_Event& ev)
             {
                 pending_button = &b;
                 sub = waiting_for_key;
-                any_hit = true;
                 return;
             }
         }
 
-        if (!any_hit)
-        {
-            pending_button = nullptr;
-            sub = none;
-        }
+        // user clicked somewhere, but not on a rebind button; cancel the rebind operation
+        pending_button = nullptr;
+        sub = none;
 
         if (res_button.rect.contains((int)cursor.x, (int)cursor.y))
         {

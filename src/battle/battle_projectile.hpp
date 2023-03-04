@@ -1,14 +1,14 @@
 #pragma once
 
-#include <glm/gtx/compatibility.hpp>
+#include <glm/common.hpp>
 #include <glm/vec2.hpp>
 
 #include "../animation.hpp"
 #include "../direction.hpp"
 #include "../mathutil.hpp"
 #include "../rectangle.hpp"
-#include "battle_field.hpp"
 
+struct battle_field;
 struct battle_projectile;
 
 struct battle_projectile_behavior
@@ -77,7 +77,7 @@ struct battle_projectile
 
     glm::vec2 interp_pos(double a) const
     {
-        return glm::lerp(prev_pos, pos, (float)a);
+        return glm::mix(prev_pos, pos, (float)a);
     }
 
     rectangle worldspace_hitbox() const
