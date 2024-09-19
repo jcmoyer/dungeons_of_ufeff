@@ -1,7 +1,7 @@
 #pragma once
 
 #include <GL/gl3w.h>
-#include <fmt/format.h>
+#include <print>
 #include <string_view>
 
 class shader_base
@@ -24,7 +24,7 @@ protected:
         {
             GLchar info[1024];
             glGetShaderInfoLog(handle, sizeof(info), nullptr, info);
-            fmt::print("failed to compile shader: {}", info);
+            std::println("failed to compile shader: {}", info);
             std::exit(EXIT_FAILURE);
         }
     }
@@ -74,7 +74,7 @@ public:
         {
             GLchar info[1024];
             glGetProgramInfoLog(handle, sizeof(info), nullptr, info);
-            fmt::print("failed to link program: {}", info);
+            std::println("failed to link program: {}", info);
             std::exit(EXIT_FAILURE);
         }
     }

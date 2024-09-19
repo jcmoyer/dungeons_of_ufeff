@@ -2,7 +2,7 @@
 
 #include <GL/gl3w.h>
 #include <algorithm>
-#include <fmt/format.h>
+#include <print>
 
 #include "dialoguebox.hpp"
 #include "global_services.hpp"
@@ -20,19 +20,19 @@ game::game()
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
     {
-        fmt::print("error initializing SDL");
+        std::println("error initializing SDL");
         std::exit(EXIT_FAILURE);
     }
 
     if (SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3) != 0)
     {
-        fmt::print("could not set SDL_GL_CONTEXT_MAJOR_VERSION=3");
+        std::println("could not set SDL_GL_CONTEXT_MAJOR_VERSION=3");
         std::exit(EXIT_FAILURE);
     }
 
     if (SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3) != 0)
     {
-        fmt::print("could not set SDL_GL_CONTEXT_MINOR_VERSION=3");
+        std::println("could not set SDL_GL_CONTEXT_MINOR_VERSION=3");
         std::exit(EXIT_FAILURE);
     }
 
@@ -40,7 +40,7 @@ game::game()
 
     if (!window)
     {
-        fmt::print("error creating window");
+        std::println("error creating window");
         std::exit(EXIT_FAILURE);
     }
 
@@ -48,7 +48,7 @@ game::game()
 
     if (gl3wInit() != GL3W_OK)
     {
-        fmt::print("error loading GL extensions");
+        std::println("error loading GL extensions");
         std::exit(EXIT_FAILURE);
     }
 }

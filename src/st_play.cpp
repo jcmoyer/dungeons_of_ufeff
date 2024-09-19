@@ -822,7 +822,7 @@ void st_play::begin_map_transition(const std::string& map_name, const std::strin
     scheduled_scripts.clear();
     current_map_name = map_name;
 
-    const std::string filename = fmt::format("assets/maps/{}.bin", map_name);
+    const std::string filename = std::format("assets/maps/{}.bin", map_name);
     me_new_world = load_world(filename.c_str());
     entity* spawn = me_new_world.find_entity(exit_name);
     assert(spawn && "no exit with matching name");
@@ -839,7 +839,7 @@ void st_play::begin_map_intro()
 
     if (wor.music_name.size())
     {
-        std::string music_filename = fmt::format("assets/music/{}.ogg", wor.music_name);
+        std::string music_filename = std::format("assets/music/{}.ogg", wor.music_name);
         current_music = state->audio->play_music(music_filename.c_str());
     }
 }
@@ -923,7 +923,7 @@ entity* st_interact_context::self() const
 
 void st_interact_context::play_sound(const char* name)
 {
-    const std::string filename = fmt::format("assets/sound/{}.ogg", name);
+    const std::string filename = std::format("assets/sound/{}.ogg", name);
     owner->state->audio->play_sound(filename.c_str());
 }
 

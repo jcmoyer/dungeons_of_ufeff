@@ -1,5 +1,7 @@
 #include "st_options.hpp"
 
+#include <format>
+
 #include "game.hpp"
 #include "mathutil.hpp"
 #include "ui.hpp"
@@ -134,10 +136,10 @@ void st_options::leave()
 void option_button::update_text(const action_map& m)
 {
     SDL_Keycode key = m.get_key(act);
-    text = fmt::format("{} ({})", get_action_name(act), SDL_GetKeyName(key));
+    text = std::format("{} ({})", get_action_name(act), SDL_GetKeyName(key));
 }
 
 void resolution_button::update_text(int scale)
 {
-    text = fmt::format("Resolution {}x", scale);
+    text = std::format("Resolution {}x", scale);
 }

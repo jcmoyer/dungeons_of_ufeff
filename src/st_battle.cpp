@@ -41,7 +41,7 @@ timer s_shadow_timer;
 
 void load_battle_field_mesh(const battle_field_properties& info, battle_field_mesh& mesh, battle_field_bounds& bounds)
 {
-    const std::string filename = fmt::format("assets/models/{}.bin", info.name);
+    const std::string filename = std::format("assets/models/{}.bin", info.name);
     std::ifstream input(filename, std::ios::binary);
 
     uint32_t nverts = 0;
@@ -270,7 +270,7 @@ void st_battle::render_health_bar()
     constexpr int TOTAL_HEALTH_BAR_WIDTH = 80;
     constexpr int TOTAL_HEALTH_BAR_HEIGHT = 20;
 
-    std::string life = fmt::format("Life: {}/{}", b_field.player().life, state->session->stats.max_life());
+    std::string life = std::format("Life: {}/{}", b_field.player().life, state->session->stats.max_life());
     const rectangle player_health_bar{8, 8, TOTAL_HEALTH_BAR_WIDTH, TOTAL_HEALTH_BAR_HEIGHT};
     const rectangle enemy_health_bar{INTERNAL_WIDTH - TOTAL_HEALTH_BAR_WIDTH - 8, 8, TOTAL_HEALTH_BAR_WIDTH, TOTAL_HEALTH_BAR_HEIGHT};
 
@@ -281,7 +281,7 @@ void st_battle::render_health_bar()
         const int32_t e_life = b_field.characters[b_field.last_enemy_hit].life;
         const int32_t e_max_life = b_field.characters[b_field.last_enemy_hit].info->max_life;
 
-        std::string enemy_life = fmt::format("Enemy: {}/{}", b_field.characters[b_field.last_enemy_hit].life, b_field.characters[b_field.last_enemy_hit].info->max_life);
+        std::string enemy_life = std::format("Enemy: {}/{}", b_field.characters[b_field.last_enemy_hit].life, b_field.characters[b_field.last_enemy_hit].info->max_life);
         render_bar(*state->batch, *state->font, *state->quad_render, enemy_health_bar, enemy_life, 0xd04648ff, e_life / (double)e_max_life);
     }
 }
@@ -362,7 +362,7 @@ void st_battle::enter(gamestate* old)
     sub = battle_fadein;
     b_fade_timer = owner->create_timer(3);
 
-    std::string music_filename = fmt::format("assets/music/{}.ogg", "make_your_stand");
+    std::string music_filename = std::format("assets/music/{}.ogg", "make_your_stand");
     current_music = state->audio->play_music(music_filename.c_str());
 
     // extra cuteness

@@ -1,7 +1,7 @@
 #include "npc.hpp"
 
 #include <cassert>
-#include <fmt/format.h>
+#include <format>
 
 #include "gamestate.hpp"
 #include "world.hpp"
@@ -181,7 +181,7 @@ void light_path(npc_context& context)
         return;
     }
 
-    std::string current_torch_name = fmt::format("maze_torch_{}", current_torch);
+    std::string current_torch_name = std::format("maze_torch_{}", current_torch);
     entity* torch = context.get_entity(current_torch_name.c_str());
     assert(torch);
     torch->type = et_light;

@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
 project(ufeffjam VERSION 1.0)
 
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+
 add_subdirectory(thirdparty EXCLUDE_FROM_ALL)
 
 set(ufeffjam_srcs
@@ -39,8 +41,8 @@ set(ufeffjam_srcs
 
 add_executable(ufeffjam ${ufeffjam_srcs})
 
-target_link_libraries(ufeffjam SDL2 SDL2main fmt gl3w glm::glm stb_vorbis stb_image)
-set_property(TARGET ufeffjam PROPERTY CXX_STANDARD 17)
+target_link_libraries(ufeffjam SDL2 SDL2main gl3w glm::glm stb_vorbis stb_image)
+set_property(TARGET ufeffjam PROPERTY CXX_STANDARD 23)
 
 if(MSVC)
     target_compile_options(ufeffjam PRIVATE /W4 /WX /external:W0 /external:anglebrackets)

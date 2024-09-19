@@ -1,6 +1,6 @@
 #pragma once
 
-#include <fmt/format.h>
+#include <format>
 #include <glm/vec3.hpp>
 #include <vector>
 
@@ -122,7 +122,7 @@ struct battle_field
 
                 if (char1.worldspace_hitbox().intersect(player().worldspace_hitbox(), subrect))
                 {
-                    std::string hurt_sound = fmt::format("assets/sound/{}.ogg", player().info->hurt_sound);
+                    std::string hurt_sound = std::format("assets/sound/{}.ogg", player().info->hurt_sound);
                     g_audio->play_sound(hurt_sound.c_str());
 
                     player().hitstun_frames += 60;
@@ -185,7 +185,7 @@ struct battle_field
 
                 if (proj_rect.intersect(char_rect, unused))
                 {
-                    std::string hurt_sound = fmt::format("assets/sound/{}.ogg", c.info->hurt_sound);
+                    std::string hurt_sound = std::format("assets/sound/{}.ogg", c.info->hurt_sound);
                     g_audio->play_sound(hurt_sound.c_str());
 
                     for (int j = 0; j < 10; ++j)

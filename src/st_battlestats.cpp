@@ -1,5 +1,7 @@
 #include "st_battlestats.hpp"
 
+#include <format>
+
 #include "game.hpp"
 #include "mathutil.hpp"
 #include "ui.hpp"
@@ -79,9 +81,9 @@ void st_battlestats::render(double a)
         state->font->draw_string(glyph_map_font_white_small::instance(), text, X, Y);
     };
 
-    std::string level_string = fmt::format("Level {}", tally_stats.level);
-    std::string life_string = fmt::format("Life {}", tally_stats.max_life());
-    std::string power_string = fmt::format("Power {}", tally_stats.power());
+    std::string level_string = std::format("Level {}", tally_stats.level);
+    std::string life_string = std::format("Life {}", tally_stats.max_life());
+    std::string power_string = std::format("Power {}", tally_stats.power());
 
     const int EXP_BAR_W = 200;
     const int EXP_BAR_H = 40;
@@ -96,7 +98,7 @@ void st_battlestats::render(double a)
     state->font->end();
 
     const rectangle EXP_BAR_RECT{EXP_BAR_X, EXP_BAR_Y, EXP_BAR_W, EXP_BAR_H};
-    std::string exp_string = fmt::format("EXP {}/{}", tally_stats.player_exp, tally_stats.exp_tnl());
+    std::string exp_string = std::format("EXP {}/{}", tally_stats.player_exp, tally_stats.exp_tnl());
 
     render_bar(*state->batch, *state->font, *state->quad_render, EXP_BAR_RECT, exp_string, 0xd27d2cff, tally_stats.player_exp / (double)tally_stats.exp_tnl());
 

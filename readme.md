@@ -12,11 +12,11 @@ particular, MSVC has moved headers around since then.
 
 The master branch is currently guaranteed to build with the following:
 
-- MSVC (cl 19.35.32215) *or* clang (15.0.7)
-- Python 3.11
+- MSVC (cl 19.39.33523)
+- Python 3.11.1
 - Tiled 1.9.2
 - Blender 2.93.4
-- cmake 3.25.2
+- cmake 3.28
 
 All of these programs must be in `PATH`.
 

@@ -1,6 +1,6 @@
 #include "controller.hpp"
 
-#include <fmt/format.h>
+#include <format>
 
 #include "../global_services.hpp"
 #include "battle_character.hpp"
@@ -28,7 +28,7 @@ void slime_controller::think(battle_character& self, battle_field& field)
     if (self.grounded && jump_timer == 0)
     {
         int id = random::rand_int(0, 2);
-        std::string jump_sound = fmt::format("assets/sound/slime{}.ogg", id);
+        std::string jump_sound = std::format("assets/sound/slime{}.ogg", id);
         g_audio->play_sound(jump_sound.c_str());
 
         self.jump();
