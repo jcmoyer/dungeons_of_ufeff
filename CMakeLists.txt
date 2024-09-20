@@ -37,7 +37,8 @@ set(ufeffjam_srcs
   "src/ui.cpp"
   "src/st_gamewin.cpp"
   "src/global_services.cpp"
-  "src/st_options.cpp")
+  "src/st_options.cpp"
+  "assets/extra/resources.rc")
 
 add_executable(ufeffjam ${ufeffjam_srcs})
 
