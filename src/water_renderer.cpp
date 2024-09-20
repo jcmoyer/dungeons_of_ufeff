@@ -83,9 +83,9 @@ void water_renderer::begin(const water_render_parameters& opts)
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
 
     glUniformMatrix4fv(uTransform, 1, GL_FALSE, glm::value_ptr(transform));
-    glUniform1d(uGlobalTime, opts.global_time);
+    glUniform1f(uGlobalTime, (float)opts.global_time);
     glUniform2fv(uWaterDirection, 1, glm::value_ptr(opts.water_direction));
-    glUniform1d(uWaterSpeed, opts.water_speed);
+    glUniform1f(uWaterSpeed, (float)opts.water_speed);
     glUniform2fv(uWaterDriftRange, 1, glm::value_ptr(opts.water_drift_range));
     glUniform1i(uSamplerBase, 0);
     glUniform1i(uSamplerBlend, 1);
