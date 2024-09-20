@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(dungeons VERSION 1.0)
+project(dungeons VERSION 1.1)
 
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
