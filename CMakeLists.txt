@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
-project(ufeffjam VERSION 1.0)
+project(dungeons VERSION 1.0)
 
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
 add_subdirectory(thirdparty EXCLUDE_FROM_ALL)
 
-set(ufeffjam_srcs
+set(dungeons_srcs
   "src/main.cpp"
   "src/game.cpp"
   "src/camera.cpp"
@@ -40,20 +40,20 @@ set(ufeffjam_srcs
   "src/st_options.cpp"
   "assets/extra/resources.rc")
 
-add_executable(ufeffjam ${ufeffjam_srcs})
+add_executable(dungeons ${dungeons_srcs})
 
-target_link_libraries(ufeffjam SDL2 SDL2main gl3w glm::glm stb_vorbis stb_image)
-set_property(TARGET ufeffjam PROPERTY CXX_STANDARD 23)
+target_link_libraries(dungeons SDL2 SDL2main gl3w glm::glm stb_vorbis stb_image)
+set_property(TARGET dungeons PROPERTY CXX_STANDARD 23)
 
 if(MSVC)
-    target_compile_options(ufeffjam PRIVATE /W4 /WX /external:W0 /external:anglebrackets)
+    target_compile_options(dungeons PRIVATE /W4 /WX /external:W0 /external:anglebrackets)
 else()
-    target_compile_options(ufeffjam PRIVATE -Wall -Wextra -pedantic -Werror)
+    target_compile_options(dungeons PRIVATE -Wall -Wextra -pedantic -Werror)
 endif()
 
-install(TARGETS ufeffjam SDL2 RUNTIME DESTINATION .)
+install(TARGETS dungeons SDL2 RUNTIME DESTINATION .)
 
-target_compile_definitions(ufeffjam PRIVATE NOMINMAX)
+target_compile_definitions(dungeons PRIVATE NOMINMAX)
 
 ##############################################################################
 # build and install maps
